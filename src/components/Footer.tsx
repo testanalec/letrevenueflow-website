@@ -48,8 +48,8 @@ export default function Footer() {
               <Image
                 src="/logo-white.png"
                 alt="LetRevenueFlow"
-                width={200}
-                height={72}
+                width={150}
+                height={54}
               />
             </Link>
             <p className="text-navy-300 text-sm leading-relaxed mb-4">

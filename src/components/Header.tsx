@@ -48,8 +48,8 @@ export default function Header() {
             <Image
               src="/logo.png"
               alt="LetRevenueFlow"
-              width={200}
-              height={72}
+              width={150}
+              height={54}
               priority
             />
           </Link>
