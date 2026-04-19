@@ -150,10 +150,10 @@ export default function Contact() {
                     <div>
                       <p className="text-sm text-navy-600 mb-1 font-semibold">Phone</p>
                       <a
-                        href="tel:+91-XXXX-XXXX-XXXX"
+                        href="tel:+919650783699"
                         className="text-navy-900 font-medium hover:text-electric-600"
                       >
-                        +91 (XXX) XXX-XXXX
+                        +91 9650783699
                       </a>
                     </div>
                   </motion.div>
@@ -169,8 +169,10 @@ export default function Contact() {
                     <div>
                       <p className="text-sm text-navy-600 mb-1 font-semibold">Office</p>
                       <p className="text-navy-900 font-medium">
-                        WeWork Gurgaon<br />
-                        Gurgaon, India
+                        LetRevenueFlow<br />
+                        WeWork, Sikandarpur<br />
+                        Gurgaon 122002, Haryana<br />
+                        India
                       </p>
                     </div>
                   </motion.div>

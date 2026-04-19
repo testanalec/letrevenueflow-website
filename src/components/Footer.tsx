@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Share2, Mail, Phone, MapPin } from 'lucide-react';
 
 export default function Footer() {
@@ -44,9 +45,12 @@ export default function Footer() {
           {/* Company Info */}
           <div>
             <Link href="/" className="inline-block mb-4">
-              <span className="text-xl font-bold bg-gradient-to-r from-white to-electric-400 bg-clip-text text-transparent">
-                LetRevenueFlow
-              </span>
+              <Image
+                src="/logo-white.svg"
+                alt="LetRevenueFlow"
+                width={180}
+                height={40}
+              />
             </Link>
             <p className="text-navy-300 text-sm leading-relaxed mb-4">
               B2B lead generation and pipeline development for growth-focused companies.
@@ -80,26 +84,26 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/services/account-based-marketing"
+                  href="/services/appointment-setting"
                   className="text-navy-300 hover:text-electric-400 transition-colors"
                 >
-                  Account-Based Marketing
+                  Appointment Setting
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/services/pipeline-development"
+                  href="/services/outbound-sales-campaigns"
                   className="text-navy-300 hover:text-electric-400 transition-colors"
                 >
-                  Pipeline Development
+                  Outbound Sales Campaigns
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/services/sales-enablement"
+                  href="/services/revenue-pipeline-management"
                   className="text-navy-300 hover:text-electric-400 transition-colors"
                 >
-                  Sales Enablement
+                  Revenue Pipeline Management
                 </Link>
               </li>
             </ul>
@@ -129,6 +133,14 @@ export default function Footer() {
               </li>
               <li>
                 <Link
+                  href="/industries/agencies"
+                  className="text-navy-300 hover:text-electric-400 transition-colors"
+                >
+                  Agencies
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/industries/professional-services"
                   className="text-navy-300 hover:text-electric-400 transition-colors"
                 >
@@ -144,14 +156,6 @@ export default function Footer() {
               Company
             </h4>
             <ul className="space-y-3 text-sm">
-              <li>
-                <Link
-                  href="/case-studies"
-                  className="text-navy-300 hover:text-electric-400 transition-colors"
-                >
-                  Case Studies
-                </Link>
-              </li>
               <li>
                 <Link
                   href="/blog"
@@ -196,9 +200,11 @@ export default function Footer() {
               <li className="flex gap-3">
                 <MapPin className="w-4 h-4 text-electric-400 flex-shrink-0 mt-0.5" />
                 <span className="text-navy-300">
+                  LetRevenueFlow
+                  <br />
                   WeWork, Sikandarpur
                   <br />
-                  Gurgaon, Haryana 121001
+                  Gurgaon 122002, Haryana
                   <br />
                   India
                 </span>
@@ -233,7 +239,7 @@ export default function Footer() {
             </p>
             <div className="flex gap-6 text-sm">
               <Link
-                href="/privacy"
+                href="/privacy-policy"
                 className="text-navy-400 hover:text-electric-400 transition-colors"
               >
                 Privacy Policy
@@ -245,7 +251,7 @@ export default function Footer() {
                 Terms of Service
               </Link>
               <Link
-                href="/cookies"
+                href="/cookie-policy"
                 className="text-navy-400 hover:text-electric-400 transition-colors"
               >
                 Cookie Policy

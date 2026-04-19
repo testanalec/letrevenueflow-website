@@ -1,9 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { ArrowRight, Calendar, Clock } from 'lucide-react';
+import { ArrowRight, Calendar, Clock, CheckCircle } from 'lucide-react';
 import CTASection from '@/components/CTASection';
 
 const containerVariants = {
@@ -27,6 +27,44 @@ const itemVariants = {
 };
 
 export default function Blog() {
+  const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
+  const [newsletterLoading, setNewsletterLoading] = useState(false);
+  const newsletterFormRef = useRef<HTMLFormElement>(null);
+
+  const handleNewsletterSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setNewsletterLoading(true);
+
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get('email');
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/rmmittal@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          _subject: 'New Newsletter Subscription from LetRevenueFlow',
+        }),
+      });
+
+      if (response.ok) {
+        setNewsletterSubmitted(true);
+        if (newsletterFormRef.current) {
+          newsletterFormRef.current.reset();
+        }
+        setTimeout(() => setNewsletterSubmitted(false), 5000);
+      }
+    } catch (error) {
+      console.error('Newsletter submission error:', error);
+    } finally {
+      setNewsletterLoading(false);
+    }
+  };
+
   const categories = [
     'All',
     'Lead Generation',
@@ -46,7 +84,7 @@ export default function Blog() {
       category: 'Outbound Sales',
       date: '2024-04-15',
       readTime: '8 min read',
-      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop',
+      gradient: 'from-blue-500 to-purple-600',
     },
     {
       id: 'lead-scoring-strategy',
@@ -57,7 +95,7 @@ export default function Blog() {
       category: 'Lead Generation',
       date: '2024-04-12',
       readTime: '10 min read',
-      image: 'https://images.unsplash.com/photo-1460925895917-adf4e565db31?w=800&h=400&fit=crop',
+      gradient: 'from-emerald-500 to-teal-600',
     },
     {
       id: 'appointment-setting-guide',
@@ -68,7 +106,7 @@ export default function Blog() {
       category: 'Appointment Setting',
       date: '2024-04-10',
       readTime: '12 min read',
-      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop',
+      gradient: 'from-orange-500 to-red-600',
     },
     {
       id: 'saas-pipeline-leak',
@@ -79,7 +117,7 @@ export default function Blog() {
       category: 'SaaS Growth',
       date: '2024-04-08',
       readTime: '9 min read',
-      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=400&fit=crop',
+      gradient: 'from-pink-500 to-rose-600',
     },
     {
       id: 'revenue-ops-framework',
@@ -90,7 +128,7 @@ export default function Blog() {
       category: 'Revenue Operations',
       date: '2024-04-05',
       readTime: '11 min read',
-      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop',
+      gradient: 'from-indigo-500 to-blue-600',
     },
     {
       id: 'personalization-at-scale',
@@ -101,7 +139,7 @@ export default function Blog() {
       category: 'Outbound Sales',
       date: '2024-04-01',
       readTime: '7 min read',
-      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop',
+      gradient: 'from-cyan-500 to-blue-600',
     },
   ];
 
@@ -199,13 +237,9 @@ export default function Blog() {
                   variants={itemVariants}
                   className="flex flex-col overflow-hidden rounded-lg border border-gray-200 hover:shadow-lg transition-shadow"
                 >
-                  {/* Image */}
-                  <Link href={`/blog/${post.slug}`} className="h-48 overflow-hidden">
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                    />
+                  {/* Image Gradient Placeholder */}
+                  <Link href={`/blog/${post.slug}`} className={`h-48 overflow-hidden bg-gradient-to-br ${(post as any).gradient}`}>
+                    <div className="w-full h-full hover:scale-105 transition-transform duration-300" />
                   </Link>
 
                   {/* Content */}
@@ -262,30 +296,46 @@ export default function Blog() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-navy-900 mb-4">
-              Subscribe to Our Newsletter
-            </h2>
-            <p className="text-lg text-navy-600 mb-8">
-              Get the latest strategies, frameworks, and tactics delivered to your inbox every week.
-            </p>
+            {newsletterSubmitted ? (
+              <div className="flex flex-col items-center justify-center">
+                <CheckCircle className="w-16 h-16 text-electric-600 mb-4" />
+                <h2 className="text-3xl md:text-4xl font-bold text-navy-900 mb-4">
+                  You're Subscribed!
+                </h2>
+                <p className="text-lg text-navy-600">
+                  Thanks for subscribing. Check your inbox for our latest content.
+                </p>
+              </div>
+            ) : (
+              <>
+                <h2 className="text-3xl md:text-4xl font-bold text-navy-900 mb-4">
+                  Subscribe to Our Newsletter
+                </h2>
+                <p className="text-lg text-navy-600 mb-8">
+                  Get the latest strategies, frameworks, and tactics delivered to your inbox every week.
+                </p>
 
-            <form className="flex flex-col sm:flex-row gap-3">
-              <input
-                type="email"
-                placeholder="your@company.com"
-                className="flex-grow px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-electric-600"
-                required
-              />
-              <button
-                type="submit"
-                className="px-6 py-3 bg-electric-600 text-white font-medium rounded-lg hover:bg-electric-700 transition-colors whitespace-nowrap"
-              >
-                Subscribe
-              </button>
-            </form>
-            <p className="text-sm text-navy-500 mt-4">
-              We'll send you valuable content once a week. No spam, ever.
-            </p>
+                <form ref={newsletterFormRef} onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3">
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="your@company.com"
+                    className="flex-grow px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-electric-600"
+                    required
+                  />
+                  <button
+                    type="submit"
+                    disabled={newsletterLoading}
+                    className="px-6 py-3 bg-electric-600 text-white font-medium rounded-lg hover:bg-electric-700 transition-colors whitespace-nowrap disabled:opacity-75 disabled:cursor-not-allowed"
+                  >
+                    {newsletterLoading ? 'Subscribing...' : 'Subscribe'}
+                  </button>
+                </form>
+                <p className="text-sm text-navy-500 mt-4">
+                  We'll send you valuable content once a week. No spam, ever.
+                </p>
+              </>
+            )}
           </motion.div>
         </div>
       </section>

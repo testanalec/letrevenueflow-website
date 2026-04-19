@@ -14,7 +14,6 @@ import {
 } from 'lucide-react';
 import FAQAccordion from '@/components/FAQAccordion';
 import CTASection from '@/components/CTASection';
-import CaseStudyCard from '@/components/CaseStudyCard';
 
 
 const containerVariants = {
@@ -132,10 +131,10 @@ export default function ITServices() {
                 Schedule a Strategy Call
               </Link>
               <Link
-                href="/case-studies"
+                href="/contact"
                 className="px-8 py-3 border border-electric-400 text-electric-300 font-medium rounded-lg hover:bg-navy-800 transition-colors"
               >
-                See IT Services Case Studies
+                Contact Us
               </Link>
             </div>
           </motion.div>
@@ -303,22 +302,26 @@ export default function ITServices() {
             className="grid grid-cols-1 md:grid-cols-2 gap-8"
           >
             <motion.div variants={itemVariants}>
-              <CaseStudyCard
-                clientType="Managed Services Provider"
-                challenge="Mid-market MSP struggling to build enterprise pipeline. Sales team was reactive, dependent on inbound leads and referrals. Enterprise decision-makers were inaccessible."
-                resultMetric="Enterprise Meetings"
-                resultValue="28 qualified opportunities"
-                caseStudyHref="/case-studies/it-services-enterprise-outreach"
-              />
+              <div className="bg-gradient-to-br from-electric-50 to-blue-50 rounded-lg border border-electric-300 p-8">
+                <h3 className="text-lg font-bold text-navy-900 mb-2">Managed Services Provider Success</h3>
+                <p className="text-navy-700 leading-relaxed mb-4">
+                  Mid-market MSP transformed from reactive, inbound-dependent sales to a proactive enterprise pipeline builder with consistent C-level engagement.
+                </p>
+                <p className="text-sm font-medium text-electric-600">
+                  Successfully accessed previously unreachable enterprise decision-makers.
+                </p>
+              </div>
             </motion.div>
             <motion.div variants={itemVariants}>
-              <CaseStudyCard
-                clientType="Systems Integrator"
-                challenge="High-value infrastructure deals require stakeholder alignment and deep technical discovery. Long deal cycles were unpredictable and difficult to forecast."
-                resultMetric="Pipeline Generated"
-                resultValue="$4.2M qualified"
-                caseStudyHref="/case-studies/it-services-enterprise-outreach"
-              />
+              <div className="bg-gradient-to-br from-electric-50 to-blue-50 rounded-lg border border-electric-300 p-8">
+                <h3 className="text-lg font-bold text-navy-900 mb-2">Systems Integrator Success</h3>
+                <p className="text-navy-700 leading-relaxed mb-4">
+                  High-value infrastructure company gained the ability to coordinate multi-stakeholder campaigns and accelerate deal cycles through strategic prospecting.
+                </p>
+                <p className="text-sm font-medium text-electric-600">
+                  Built a predictable, scalable enterprise pipeline.
+                </p>
+              </div>
             </motion.div>
           </motion.div>
 
@@ -330,10 +333,10 @@ export default function ITServices() {
             className="text-center mt-12"
           >
             <Link
-              href="/case-studies"
+              href="/contact"
               className="inline-flex items-center gap-2 text-electric-600 font-medium hover:text-electric-700 transition-colors group text-lg"
             >
-              View All Case Studies
+              Learn More
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
@@ -372,8 +375,8 @@ export default function ITServices() {
         description="Schedule a consultation to discuss your target market, decision-maker access challenges, and how we can help you build predictable enterprise pipeline."
         primaryButtonText="Book Your Strategy Call"
         primaryButtonHref="/book-a-call"
-        secondaryButtonText="Explore Case Studies"
-        secondaryButtonHref="/case-studies"
+        secondaryButtonText="Contact Us"
+        secondaryButtonHref="/contact"
       />
     </main>
   );

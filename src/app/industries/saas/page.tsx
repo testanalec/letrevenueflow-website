@@ -14,7 +14,6 @@ import {
 } from 'lucide-react';
 import FAQAccordion from '@/components/FAQAccordion';
 import CTASection from '@/components/CTASection';
-import CaseStudyCard from '@/components/CaseStudyCard';
 import ServiceCard from '@/components/ServiceCard';
 
 
@@ -136,10 +135,10 @@ export default function SaaS() {
                 Schedule a Strategy Call
               </Link>
               <Link
-                href="/case-studies"
+                href="/contact"
                 className="px-8 py-3 border border-electric-400 text-electric-300 font-medium rounded-lg hover:bg-navy-800 transition-colors"
               >
-                See SaaS Case Studies
+                Contact Us
               </Link>
             </div>
           </motion.div>
@@ -284,22 +283,26 @@ export default function SaaS() {
             className="grid grid-cols-1 md:grid-cols-2 gap-8"
           >
             <motion.div variants={itemVariants}>
-              <CaseStudyCard
-                clientType="Mid-Market SaaS"
-                challenge="B2B workflow automation platform hitting plateau at 40% YoY growth. Pipeline was unpredictable and sales team buried in prospecting."
-                resultMetric="Meetings Booked"
-                resultValue="64 qualified demos"
-                caseStudyHref="/case-studies/saas-pipeline-growth"
-              />
+              <div className="bg-gradient-to-br from-electric-50 to-blue-50 rounded-lg border border-electric-300 p-8">
+                <h3 className="text-lg font-bold text-navy-900 mb-2">Mid-Market SaaS Success</h3>
+                <p className="text-navy-700 leading-relaxed mb-4">
+                  B2B workflow automation platform achieved significant pipeline growth and improved sales team efficiency by eliminating prospecting bottlenecks.
+                </p>
+                <p className="text-sm font-medium text-electric-600">
+                  Strong results across meetings booked and sales cycle improvements.
+                </p>
+              </div>
             </motion.div>
             <motion.div variants={itemVariants}>
-              <CaseStudyCard
-                clientType="Enterprise SaaS"
-                challenge="High-ACV product requiring multiple stakeholder alignment. Prospecting into accounts was inefficient and relied on inbound only."
-                resultMetric="Average Deal Velocity"
-                resultValue="-22 days"
-                caseStudyHref="/case-studies/saas-pipeline-growth"
-              />
+              <div className="bg-gradient-to-br from-electric-50 to-blue-50 rounded-lg border border-electric-300 p-8">
+                <h3 className="text-lg font-bold text-navy-900 mb-2">Enterprise SaaS Success</h3>
+                <p className="text-navy-700 leading-relaxed mb-4">
+                  High-ACV product company successfully scaled prospecting across multiple stakeholders, enabling faster deal progression.
+                </p>
+                <p className="text-sm font-medium text-electric-600">
+                  Improved velocity and stakeholder engagement across enterprise accounts.
+                </p>
+              </div>
             </motion.div>
           </motion.div>
 
@@ -311,10 +314,10 @@ export default function SaaS() {
             className="text-center mt-12"
           >
             <Link
-              href="/case-studies"
+              href="/contact"
               className="inline-flex items-center gap-2 text-electric-600 font-medium hover:text-electric-700 transition-colors group text-lg"
             >
-              View All Case Studies
+              Learn More
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
@@ -353,8 +356,8 @@ export default function SaaS() {
         description="Let's talk about your specific challenges. Schedule a 20-minute strategy call with our team to explore what's possible."
         primaryButtonText="Book Your Strategy Call"
         primaryButtonHref="/book-a-call"
-        secondaryButtonText="See More SaaS Results"
-        secondaryButtonHref="/case-studies"
+        secondaryButtonText="Contact Us"
+        secondaryButtonHref="/contact"
       />
     </main>
   );

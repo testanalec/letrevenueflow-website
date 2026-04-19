@@ -1,0 +1,19 @@
+<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <!-- Favicon Mark Only -->
+  <defs>
+    <linearGradient id="faviconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f1d4a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2563eb;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Main flowing shape -->
+  <path d="M 6 18 Q 10 10 18 10 L 26 10 Q 30 10 32 14 L 34 18 Q 35 20 34 22 L 32 26 Q 30 30 26 30 L 18 30 Q 10 30 6 22 Z" fill="url(#faviconGradient)" />
+
+  <!-- Arrow point (right side) -->
+  <path d="M 26 10 L 34 18 L 26 26" fill="url(#faviconGradient)" />
+
+  <!-- Secondary flowing elements -->
+  <circle cx="8" cy="18" r="2" fill="#2563eb" opacity="0.8" />
+  <circle cx="16" cy="14" r="1.5" fill="#2563eb" opacity="0.6" />
+</svg>

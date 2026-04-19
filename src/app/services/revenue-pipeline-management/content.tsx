@@ -12,7 +12,6 @@ import {
 } from 'lucide-react';
 import FAQAccordion from '@/components/FAQAccordion';
 import CTASection from '@/components/CTASection';
-import CaseStudyCard from '@/components/CaseStudyCard';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -475,31 +474,37 @@ export default function RevenuePipelineManagementContent() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             <motion.div variants={itemVariants}>
-              <CaseStudyCard
-                clientType="SaaS"
-                challenge="Sales team had no visibility into when deals would close. Forecasting was a guessing game. Management needed to clean up data and establish clear stage definitions."
-                resultMetric="Forecast Accuracy"
-                resultValue="92%"
-                caseStudyHref="/case-studies"
-              />
+              <div className="bg-gradient-to-br from-electric-50 to-blue-50 rounded-lg border border-electric-300 p-8">
+                <h3 className="text-lg font-bold text-navy-900 mb-2">SaaS Success</h3>
+                <p className="text-navy-700 leading-relaxed mb-4">
+                  Sales team gained visibility into deal progression. Data cleanup and stage definitions enabled accurate, reliable forecasting.
+                </p>
+                <p className="text-sm font-medium text-electric-600">
+                  Management confidence in sales projections significantly improved.
+                </p>
+              </div>
             </motion.div>
             <motion.div variants={itemVariants}>
-              <CaseStudyCard
-                clientType="IT Services"
-                challenge="Pipeline was healthy on paper but deals were stalling in later stages. Needed clear stage criteria and governance to prevent slippage."
-                resultMetric="Deal Velocity"
-                resultValue="+28 days faster"
-                caseStudyHref="/case-studies"
-              />
+              <div className="bg-gradient-to-br from-electric-50 to-blue-50 rounded-lg border border-electric-300 p-8">
+                <h3 className="text-lg font-bold text-navy-900 mb-2">IT Services Success</h3>
+                <p className="text-navy-700 leading-relaxed mb-4">
+                  Deal stalling eliminated through stage governance and clear progression criteria. Pipeline health and velocity improved.
+                </p>
+                <p className="text-sm font-medium text-electric-600">
+                  Faster deal cycles and improved sales execution achieved.
+                </p>
+              </div>
             </motion.div>
             <motion.div variants={itemVariants}>
-              <CaseStudyCard
-                clientType="B2B SaaS"
-                challenge="CRM was a mess with duplicates, incomplete records, and inconsistent data. Marketing and sales couldn't work together effectively."
-                resultMetric="Data Quality"
-                resultValue="98.5%"
-                caseStudyHref="/case-studies"
-              />
+              <div className="bg-gradient-to-br from-electric-50 to-blue-50 rounded-lg border border-electric-300 p-8">
+                <h3 className="text-lg font-bold text-navy-900 mb-2">B2B SaaS Success</h3>
+                <p className="text-navy-700 leading-relaxed mb-4">
+                  CRM transformed from chaotic to clean and usable. Data quality improved dramatically enabling marketing-sales alignment.
+                </p>
+                <p className="text-sm font-medium text-electric-600">
+                  Consolidated system of record established with reliable data.
+                </p>
+              </div>
             </motion.div>
           </motion.div>
         </div>

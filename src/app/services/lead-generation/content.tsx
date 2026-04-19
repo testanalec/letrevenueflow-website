@@ -12,7 +12,6 @@ import {
 } from 'lucide-react';
 import FAQAccordion from '@/components/FAQAccordion';
 import CTASection from '@/components/CTASection';
-import CaseStudyCard from '@/components/CaseStudyCard';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -467,31 +466,37 @@ export default function LeadGenerationContent() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             <motion.div variants={itemVariants}>
-              <CaseStudyCard
-                clientType="SaaS"
-                challenge="Low-quality lead lists from freelancers were costing the sales team hours of time. Needed to ramp pipeline for Series B fundraising."
-                resultMetric="Qualified Leads Generated"
-                resultValue="320 leads"
-                caseStudyHref="/case-studies"
-              />
+              <div className="bg-gradient-to-br from-electric-50 to-blue-50 rounded-lg border border-electric-300 p-8">
+                <h3 className="text-lg font-bold text-navy-900 mb-2">SaaS Success</h3>
+                <p className="text-navy-700 leading-relaxed mb-4">
+                  Low-quality lead lists were replaced with validated, high-quality prospect data aligned with ICP criteria. Sales team efficiency improved dramatically.
+                </p>
+                <p className="text-sm font-medium text-electric-600">
+                  Significant qualified leads generated and pipeline growth achieved.
+                </p>
+              </div>
             </motion.div>
             <motion.div variants={itemVariants}>
-              <CaseStudyCard
-                clientType="IT Services"
-                challenge="Enterprise sales team had weak pipeline visibility and long lead research time. Needed standardized, ICP-aligned targeting."
-                resultMetric="Cost Per Lead"
-                resultValue="$45"
-                caseStudyHref="/case-studies"
-              />
+              <div className="bg-gradient-to-br from-electric-50 to-blue-50 rounded-lg border border-electric-300 p-8">
+                <h3 className="text-lg font-bold text-navy-900 mb-2">IT Services Success</h3>
+                <p className="text-navy-700 leading-relaxed mb-4">
+                  Enterprise sales team gained visibility and speed through standardized, ICP-aligned targeting. Lead research time reduced significantly.
+                </p>
+                <p className="text-sm font-medium text-electric-600">
+                  Improved cost efficiency and scalable lead sourcing established.
+                </p>
+              </div>
             </motion.div>
             <motion.div variants={itemVariants}>
-              <CaseStudyCard
-                clientType="B2B SaaS"
-                challenge="Manual lead research bottleneck limiting outreach. CRM hygiene was poor with inconsistent qualification."
-                resultMetric="Pipeline Growth"
-                resultValue="$850K"
-                caseStudyHref="/case-studies"
-              />
+              <div className="bg-gradient-to-br from-electric-50 to-blue-50 rounded-lg border border-electric-300 p-8">
+                <h3 className="text-lg font-bold text-navy-900 mb-2">B2B SaaS Success</h3>
+                <p className="text-navy-700 leading-relaxed mb-4">
+                  Manual research bottleneck eliminated and CRM hygiene improved with consistent qualification standards. Pipeline accelerated.
+                </p>
+                <p className="text-sm font-medium text-electric-600">
+                  Repeatable lead generation process established with improved data quality.
+                </p>
+              </div>
             </motion.div>
           </motion.div>
         </div>

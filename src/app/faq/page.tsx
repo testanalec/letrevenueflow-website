@@ -43,7 +43,7 @@ export default function FAQ() {
       {
         question: 'Who are your typical clients?',
         answer:
-          'Our ideal clients are B2B SaaS companies, IT services firms, and technology companies with ACV $3K-$50K+. They typically have 10-500 employees, are growing 30%+ annually, and need a dedicated partner to scale outbound.',
+          'Our ideal clients are B2B SaaS companies, IT services firms, and technology companies. They typically have a team of varying sizes, are experiencing growth, and need a dedicated partner to scale outbound.',
       },
       {
         question: 'Where is LetRevenueFlow based?',
@@ -53,7 +53,7 @@ export default function FAQ() {
       {
         question: 'What does your team look like?',
         answer:
-          'Our team consists of experienced B2B operators with 15+ years combined experience in lead generation, sales enablement, and revenue operations. Everyone on our team has worked in-house at B2B companies and understands your challenges firsthand.',
+          'Our team consists of experienced B2B operators with extensive combined experience in lead generation, sales enablement, and revenue operations. Everyone on our team has worked in-house at B2B companies and understands your challenges firsthand.',
       },
     ],
     Services: [
@@ -87,7 +87,7 @@ export default function FAQ() {
       {
         question: 'What are your pricing tiers?',
         answer:
-          'We have three tiers: Starter ($2,500/month), Growth ($5,000/month), and Scale (custom). Visit our pricing page for detailed features and what\'s included at each level.',
+          'We have three tiers: Starter, Growth, and Scale (custom). Visit our pricing page for detailed features and what\'s included at each level.',
       },
       {
         question: 'What\'s included in the price?',
@@ -97,7 +97,7 @@ export default function FAQ() {
       {
         question: 'Do you charge setup fees?',
         answer:
-          'No hidden setup fees. Some clients opt for a separate strategy consultation ($2,000-$5,000) to accelerate onboarding, but this is optional.',
+          'No hidden setup fees. Some clients opt for a separate strategy consultation to accelerate onboarding, but this is optional. Contact us for details.',
       },
       {
         question: 'Are there volume commitments?',
@@ -119,7 +119,7 @@ export default function FAQ() {
       {
         question: 'How long does it take to get started?',
         answer:
-          'From contract signing to first outreach typically takes 2-3 weeks. This includes ICP definition, list building, message development, CRM setup, and campaign launch.',
+          'From contract signing to first outreach typically takes a few weeks. This includes ICP definition, list building, message development, CRM setup, and campaign launch.',
       },
       {
         question: 'How do you define our ICP?',
@@ -141,12 +141,12 @@ export default function FAQ() {
       {
         question: 'What kind of results can we expect?',
         answer:
-          'Results vary by industry, ICP, and offer. Typical benchmarks: 5-10% reply rate, 15-25% qualified lead conversion rate, 2-5% meeting booking rate, and $150-$500 cost per qualified lead. We\'ll share specific benchmarks for your industry during the discovery call.',
+          'Results vary significantly by industry, ICP, and offer. We\'ll share specific benchmarks for your industry during the discovery call based on your market and business model.',
       },
       {
         question: 'How long until we see results?',
         answer:
-          'We typically see the first responses within 5-7 days of campaign launch. Meaningful pipeline impact usually takes 6-8 weeks as we test, learn, and optimize.',
+          'We typically see the first responses within days of campaign launch. Meaningful pipeline impact usually takes several weeks as we test, learn, and optimize.',
       },
       {
         question: 'How do you measure success?',
@@ -154,9 +154,9 @@ export default function FAQ() {
           'Success is measured by metrics that matter to you: pipeline generated, cost per qualified lead, meeting show rate, deal close rates, and revenue influenced. We provide transparent monthly reporting on all KPIs.',
       },
       {
-        question: 'What if we\'re not seeing results after 60 days?',
+        question: 'What if we\'re not seeing results after a couple of months?',
         answer:
-          'We focus on long-term partnerships, not quick wins. If you\'re not seeing results after 60 days, we\'ll conduct a free strategy audit, identify what\'s not working, and adjust your approach at no additional cost.',
+          'We focus on long-term partnerships, not quick wins. If you\'re not seeing results after a reasonable period, we\'ll conduct a free strategy audit, identify what\'s not working, and adjust your approach at no additional cost.',
       },
       {
         question: 'Do you guarantee results?',

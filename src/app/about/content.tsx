@@ -76,7 +76,7 @@ export default function AboutContent() {
     {
       question: 'What experience does your team have?',
       answer:
-        'Our founders and core team bring 15+ years of combined experience in B2B revenue operations, lead generation, pipeline management, and GTM strategy. We\'ve worked across SaaS, IT services, professional services, and technology sectors.',
+        'Our founders and core team bring extensive combined experience in B2B revenue operations, lead generation, pipeline management, and GTM strategy. We\'ve worked across SaaS, IT services, professional services, and technology sectors.',
     },
     {
       question: 'How do you ensure lead quality?',
@@ -128,7 +128,7 @@ export default function AboutContent() {
               About LetRevenueFlow
             </h1>
             <p className="text-xl md:text-2xl text-navy-100 mb-8 leading-relaxed max-w-2xl">
-              A revenue partner, not a service vendor. Built on 15+ years of B2B GTM execution experience.
+              A revenue partner, not a service vendor. Built on extensive B2B GTM execution experience.
             </p>
           </motion.div>
         </div>
@@ -155,7 +155,7 @@ export default function AboutContent() {
                 We saw a gap. B2B companies needed a different model: a dedicated team of experienced operators who take ownership of revenue growth, operate transparently, and scale with you.
               </p>
               <p>
-                That's LetRevenueFlow. We're not a call center. We're not a freelancer network. We're a revenue partner built by people who've spent 15+ years in B2B GTM—running campaigns, managing pipelines, and building scalable processes.
+                That's LetRevenueFlow. We're not a call center. We're not a freelancer network. We're a revenue partner built by people who've spent years in B2B GTM—running campaigns, managing pipelines, and building scalable processes.
               </p>
             </div>
           </motion.div>

@@ -40,7 +40,7 @@ const industries = [
     description: 'Drive qualified demos, accelerate SQLs, and build predictable pipeline with targeted lead generation designed for SaaS sales cycles.',
     icon: Code2,
     href: '/industries/saas',
-    metrics: ['32% avg demo increase', '18% SQL growth', '24% faster sales cycle'],
+    metrics: ['Increased demo bookings', 'Improved SQL conversion', 'Faster sales cycles'],
     color: 'blue',
   },
   {
@@ -50,7 +50,7 @@ const industries = [
     description: 'Access C-level decision-makers and technical buyers. Build enterprise pipeline with consultative prospecting and relationship mapping.',
     icon: Briefcase,
     href: '/industries/it-services',
-    metrics: ['45% higher CTR', 'Enterprise-tier meetings', 'Executive access'],
+    metrics: ['Higher engagement rates', 'Enterprise-tier meetings', 'Executive access'],
     color: 'indigo',
   },
   {
@@ -60,7 +60,7 @@ const industries = [
     description: 'Scale your business development team. Generate qualified partner and client pipeline while you focus on delivery excellence.',
     icon: Zap,
     href: '/industries/agencies',
-    metrics: ['3X partner pipeline', 'Outsourced SDR support', '28 day appointment cycle'],
+    metrics: ['Expanded partner pipeline', 'Outsourced SDR support', 'Faster appointment cycles'],
     color: 'cyan',
   },
 ];
@@ -244,8 +244,8 @@ export default function Industries() {
         description="Start with a no-pressure consultation to understand your challenges and explore the best strategy for your business."
         primaryButtonText="Schedule a Consultation"
         primaryButtonHref="/book-a-call"
-        secondaryButtonText="Explore Case Studies"
-        secondaryButtonHref="/case-studies"
+        secondaryButtonText="Contact Us"
+        secondaryButtonHref="/contact"
       />
     </main>
   );

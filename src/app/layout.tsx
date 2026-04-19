@@ -6,6 +6,9 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "LetRevenueFlow — Revenue Pipeline Growth for B2B Teams",
   description: "LetRevenueFlow helps SaaS, IT services firms, and agencies generate qualified opportunities through lead generation, appointment setting, outbound sales campaigns, and pipeline management.",
+  icons: {
+    icon: '/favicon.svg',
+  },
   openGraph: {
     title: "LetRevenueFlow — Revenue Pipeline Growth for B2B Teams",
     description: "LetRevenueFlow helps SaaS, IT services firms, and agencies generate qualified opportunities through lead generation, appointment setting, outbound sales campaigns, and pipeline management.",

@@ -2,19 +2,21 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const services = [
   { name: 'Lead Generation', href: '/services/lead-generation' },
-  { name: 'Account-Based Marketing', href: '/services/account-based-marketing' },
-  { name: 'Pipeline Development', href: '/services/pipeline-development' },
-  { name: 'Sales Enablement', href: '/services/sales-enablement' },
+  { name: 'Appointment Setting', href: '/services/appointment-setting' },
+  { name: 'Outbound Sales Campaigns', href: '/services/outbound-sales-campaigns' },
+  { name: 'Revenue Pipeline Management', href: '/services/revenue-pipeline-management' },
 ];
 
 const industries = [
   { name: 'SaaS', href: '/industries/saas' },
   { name: 'IT Services', href: '/industries/it-services' },
+  { name: 'Agencies', href: '/industries/agencies' },
   { name: 'Professional Services', href: '/industries/professional-services' },
 ];
 
@@ -43,9 +45,13 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
-            <span className="text-xl font-bold bg-gradient-to-r from-navy-900 to-electric-600 bg-clip-text text-transparent">
-              LetRevenueFlow
-            </span>
+            <Image
+              src="/logo.svg"
+              alt="LetRevenueFlow"
+              width={180}
+              height={40}
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -96,13 +102,6 @@ export default function Header() {
             </div>
 
             <Link
-              href="/case-studies"
-              className="px-3 py-2 text-sm font-medium text-navy-900 hover:text-electric-600 transition-colors"
-            >
-              Case Studies
-            </Link>
-
-            <Link
               href="/pricing"
               className="px-3 py-2 text-sm font-medium text-navy-900 hover:text-electric-600 transition-colors"
             >
@@ -127,7 +126,7 @@ export default function Header() {
           {/* CTA Button */}
           <div className="hidden md:block">
             <Link
-              href="#contact"
+              href="/book-a-call"
               className="px-6 py-2 bg-electric-600 text-white text-sm font-medium rounded-lg hover:bg-electric-700 transition-colors shadow-sm hover:shadow-md"
             >
               Book Strategy Call
@@ -238,14 +237,6 @@ export default function Header() {
                 </AnimatePresence>
 
                 <Link
-                  href="/case-studies"
-                  className="block px-3 py-2 text-sm font-medium text-navy-900 hover:bg-electric-50 rounded-lg transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Case Studies
-                </Link>
-
-                <Link
                   href="/pricing"
                   className="block px-3 py-2 text-sm font-medium text-navy-900 hover:bg-electric-50 rounded-lg transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -270,7 +261,7 @@ export default function Header() {
                 </Link>
 
                 <Link
-                  href="#contact"
+                  href="/book-a-call"
                   className="block px-6 py-2 mt-4 bg-electric-600 text-white text-sm font-medium rounded-lg hover:bg-electric-700 transition-colors text-center"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >

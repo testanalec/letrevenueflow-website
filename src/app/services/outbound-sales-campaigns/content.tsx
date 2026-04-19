@@ -12,7 +12,6 @@ import {
 } from 'lucide-react';
 import FAQAccordion from '@/components/FAQAccordion';
 import CTASection from '@/components/CTASection';
-import CaseStudyCard from '@/components/CaseStudyCard';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -466,31 +465,37 @@ export default function OutboundSalesCampaignsContent() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             <motion.div variants={itemVariants}>
-              <CaseStudyCard
-                clientType="SaaS"
-                challenge="Campaign execution was inconsistent and scattered across channels. Needed coordinated, multi-touch campaigns with clear accountability."
-                resultMetric="Response Rate"
-                resultValue="7.2%"
-                caseStudyHref="/case-studies"
-              />
+              <div className="bg-gradient-to-br from-electric-50 to-blue-50 rounded-lg border border-electric-300 p-8">
+                <h3 className="text-lg font-bold text-navy-900 mb-2">SaaS Success</h3>
+                <p className="text-navy-700 leading-relaxed mb-4">
+                  Scattered, inconsistent campaigns coordinated into strategic, multi-touch outreach with clear ownership and accountability.
+                </p>
+                <p className="text-sm font-medium text-electric-600">
+                  Improved response rates and engagement through coordinated campaigns.
+                </p>
+              </div>
             </motion.div>
             <motion.div variants={itemVariants}>
-              <CaseStudyCard
-                clientType="IT Services"
-                challenge="Email campaigns bouncing and undeliverable. Sender reputation was damaged by poor list quality and spam complaints."
-                resultMetric="Inbox Placement"
-                resultValue="94%"
-                caseStudyHref="/case-studies"
-              />
+              <div className="bg-gradient-to-br from-electric-50 to-blue-50 rounded-lg border border-electric-300 p-8">
+                <h3 className="text-lg font-bold text-navy-900 mb-2">IT Services Success</h3>
+                <p className="text-navy-700 leading-relaxed mb-4">
+                  Email delivery challenges resolved through list quality improvements and sender reputation management across campaigns.
+                </p>
+                <p className="text-sm font-medium text-electric-600">
+                  Strong inbox placement and reduced bounce rates achieved.
+                </p>
+              </div>
             </motion.div>
             <motion.div variants={itemVariants}>
-              <CaseStudyCard
-                clientType="B2B SaaS"
-                challenge="Ad-hoc outreach with no testing, optimization, or learning. Message fatigue and low conversion from engagement to meetings."
-                resultMetric="Pipeline Impact"
-                resultValue="$1.2M"
-                caseStudyHref="/case-studies"
-              />
+              <div className="bg-gradient-to-br from-electric-50 to-blue-50 rounded-lg border border-electric-300 p-8">
+                <h3 className="text-lg font-bold text-navy-900 mb-2">B2B SaaS Success</h3>
+                <p className="text-navy-700 leading-relaxed mb-4">
+                  Ad-hoc outreach transformed into a disciplined, tested approach with ongoing optimization and learning cycles.
+                </p>
+                <p className="text-sm font-medium text-electric-600">
+                  Significant pipeline impact and conversion improvements delivered.
+                </p>
+              </div>
             </motion.div>
           </motion.div>
         </div>

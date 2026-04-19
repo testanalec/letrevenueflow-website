@@ -12,7 +12,6 @@ import {
 } from 'lucide-react';
 import FAQAccordion from '@/components/FAQAccordion';
 import CTASection from '@/components/CTASection';
-import CaseStudyCard from '@/components/CaseStudyCard';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -459,31 +458,37 @@ export default function AppointmentSettingContent() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             <motion.div variants={itemVariants}>
-              <CaseStudyCard
-                clientType="SaaS"
-                challenge="Low show rates (55%) and unqualified meetings were wasting sales team time. Needed to improve meeting quality and predictability."
-                resultMetric="Meeting Show Rate"
-                resultValue="81%"
-                caseStudyHref="/case-studies"
-              />
+              <div className="bg-gradient-to-br from-electric-50 to-blue-50 rounded-lg border border-electric-300 p-8">
+                <h3 className="text-lg font-bold text-navy-900 mb-2">SaaS Success</h3>
+                <p className="text-navy-700 leading-relaxed mb-4">
+                  Improved meeting quality dramatically by strengthening qualification processes and ensuring only show-ready prospects were booked.
+                </p>
+                <p className="text-sm font-medium text-electric-600">
+                  Higher meeting show rates and improved sales team utilization achieved.
+                </p>
+              </div>
             </motion.div>
             <motion.div variants={itemVariants}>
-              <CaseStudyCard
-                clientType="IT Services"
-                challenge="Sales team spending 60% of time on discovery calls instead of closing. Needed pre-qualified meetings with clear budget and timeline."
-                resultMetric="Sales Productivity"
-                resultValue="+35%"
-                caseStudyHref="/case-studies"
-              />
+              <div className="bg-gradient-to-br from-electric-50 to-blue-50 rounded-lg border border-electric-300 p-8">
+                <h3 className="text-lg font-bold text-navy-900 mb-2">IT Services Success</h3>
+                <p className="text-navy-700 leading-relaxed mb-4">
+                  Sales team freed up to focus on closing by receiving pre-qualified meetings with budget and timeline confirmed upfront.
+                </p>
+                <p className="text-sm font-medium text-electric-600">
+                  Significant productivity gains in sales execution and close rates.
+                </p>
+              </div>
             </motion.div>
             <motion.div variants={itemVariants}>
-              <CaseStudyCard
-                clientType="B2B SaaS"
-                challenge="High volume of booked meetings but low conversion rate. Needed better qualification and discovery before handoff."
-                resultMetric="Meeting-to-Opp Rate"
-                resultValue="42%"
-                caseStudyHref="/case-studies"
-              />
+              <div className="bg-gradient-to-br from-electric-50 to-blue-50 rounded-lg border border-electric-300 p-8">
+                <h3 className="text-lg font-bold text-navy-900 mb-2">B2B SaaS Success</h3>
+                <p className="text-navy-700 leading-relaxed mb-4">
+                  High-volume pipeline transformed into high-quality opportunities through improved qualification and discovery depth.
+                </p>
+                <p className="text-sm font-medium text-electric-600">
+                  Meeting-to-opportunity conversion rate improved substantially.
+                </p>
+              </div>
             </motion.div>
           </motion.div>
         </div>

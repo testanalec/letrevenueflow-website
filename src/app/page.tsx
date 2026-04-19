@@ -15,7 +15,6 @@ import {
 import MetricsStrip from '@/components/MetricsStrip';
 import ServiceCard from '@/components/ServiceCard';
 import HowItWorks from '@/components/HowItWorks';
-import CaseStudyCard from '@/components/CaseStudyCard';
 import TestimonialCard from '@/components/TestimonialCard';
 import IndustryTabs from '@/components/IndustryTabs';
 import FAQAccordion from '@/components/FAQAccordion';
@@ -286,7 +285,7 @@ export default function Home() {
       {/* How It Works Section */}
       <HowItWorks />
 
-      {/* Results/Metrics Section */}
+      {/* What We Deliver Section */}
       <section className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -297,21 +296,21 @@ export default function Home() {
             className="max-w-2xl mx-auto text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-navy-900 mb-6">
-              Results That Matter to Revenue Teams
+              What We Deliver
             </h2>
             <p className="text-lg text-navy-700">
-              The metrics that drive your business forward.
+              Outcomes that align with your revenue goals.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { metric: '42%', label: 'Avg. Increase in Pipeline Value', icon: TrendingUp },
-              { metric: '3.2x', label: 'Avg. ROI on Outbound Programs', icon: BarChart3 },
-              { metric: '67%', label: 'Show Rate on Booked Meetings', icon: Calendar },
-              { metric: '18%', label: 'Avg. Conversion Rate (Opp → Close)', icon: CheckCircle },
-              { metric: '6.3', label: 'Avg. Pipeline Velocity (Months)', icon: Zap },
-              { metric: '$8.2M', label: 'Avg. Pipeline Generated per Client/Year', icon: TrendingUp },
+              { title: 'Increased Pipeline Value', description: 'Consistent growth in qualified opportunities', icon: TrendingUp },
+              { title: 'Strong Campaign ROI', description: 'Outbound programs that pay for themselves', icon: BarChart3 },
+              { title: 'High Show Rates', description: 'Meetings that actually happen', icon: Calendar },
+              { title: 'Better Conversion', description: 'From opportunity to closed deal', icon: CheckCircle },
+              { title: 'Faster Pipeline Velocity', description: 'Shorter sales cycles through better targeting', icon: Zap },
+              { title: 'Scalable Revenue Growth', description: 'Systems that grow with your team', icon: TrendingUp },
             ].map((item, index) => {
               const Icon = item.icon;
               return (
@@ -324,8 +323,8 @@ export default function Home() {
                   className="bg-white rounded-lg border border-gray-200 p-8 text-center hover:shadow-lg transition-shadow"
                 >
                   <Icon className="w-8 h-8 text-electric-600 mx-auto mb-4" />
-                  <p className="text-4xl font-bold text-electric-600 mb-2">{item.metric}</p>
-                  <p className="text-navy-700 font-medium">{item.label}</p>
+                  <h3 className="text-xl font-bold text-navy-900 mb-2">{item.title}</h3>
+                  <p className="text-navy-700">{item.description}</p>
                 </motion.div>
               );
             })}
@@ -333,61 +332,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Case Studies */}
+      {/* Ready to See Results Section */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="max-w-2xl mx-auto text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-navy-900 mb-6">
-              Featured Case Studies
+              Ready to See Results?
             </h2>
-            <p className="text-lg text-navy-700">
-              Real results from our clients.
+            <p className="text-xl text-navy-700 mb-10 leading-relaxed">
+              We work with SaaS companies, IT services firms, and agencies to build predictable, scalable revenue pipelines. Let's talk about your specific situation and explore what's possible.
             </p>
-          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <CaseStudyCard
-              clientType="SaaS"
-              challenge="$2M ARR SaaS company struggling with unpredictable pipeline. Sales team was reactive, not prospecting consistently."
-              resultMetric="Pipeline Generated"
-              resultValue="$1.2M"
-              caseStudyHref="/case-studies/saas-company-1"
-            />
-            <CaseStudyCard
-              clientType="IT Services"
-              challenge="Enterprise IT services firm unable to break into new vertical markets. Decision makers were inaccessible."
-              resultMetric="New Enterprises Reached"
-              resultValue="24"
-              caseStudyHref="/case-studies/it-services-1"
-            />
-            <CaseStudyCard
-              clientType="Professional Services"
-              challenge="Consulting firm with strong delivery but inconsistent pipeline. Meetings booked were rarely show-ups."
-              resultMetric="Show Rate"
-              resultValue="71%"
-              caseStudyHref="/case-studies/consulting-1"
-            />
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="text-center mt-12"
-          >
-            <Link
-              href="/case-studies"
-              className="inline-block px-8 py-3 border-2 border-electric-600 text-electric-600 font-bold rounded-lg hover:bg-electric-50 transition-colors"
-            >
-              View All Case Studies
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/book-a-call"
+                className="inline-block px-8 py-4 bg-electric-600 text-white font-bold rounded-lg hover:bg-electric-700 transition-colors shadow-lg hover:shadow-xl"
+              >
+                Schedule a Strategy Call
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-block px-8 py-4 border-2 border-electric-600 text-electric-600 font-bold rounded-lg hover:bg-electric-50 transition-colors"
+              >
+                Get Free Pipeline Audit
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -496,7 +470,7 @@ export default function Home() {
               rating={5}
             />
             <TestimonialCard
-              quote="Finally, someone who gets that lead gen is about quality, not quantity. Our show rate went from 40% to 68% in 3 months."
+              quote="Finally, someone who gets that lead gen is about quality, not quantity. Our show rate improved dramatically in just a few months."
               name="Jennifer Walsh"
               title="Managing Director"
               company="Grant Thornton Advisory"
@@ -604,7 +578,7 @@ export default function Home() {
                 {
                   question: 'What is your pricing model?',
                   answer:
-                    'We typically work on a retainer basis starting at $8K-15K/month for most B2B teams, with custom pricing based on scope and goals. We also offer performance-based pricing for clients that prefer it. Let us talk about what makes sense for you.',
+                    'We offer flexible engagement models tailored to your goals and scale. Options include retainer-based pricing, performance-based models, or custom arrangements depending on your needs. Let us talk about what makes sense for you.',
                 },
               ]}
             />

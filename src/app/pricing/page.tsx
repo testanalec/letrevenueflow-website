@@ -1,153 +1,62 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Check, X } from 'lucide-react';
+import { CheckCircle, ArrowRight, AlertCircle } from 'lucide-react';
 import FAQAccordion from '@/components/FAQAccordion';
-import CTASection from '@/components/CTASection';
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, easing: 'easeOut' },
-  },
-};
 
 export default function Pricing() {
-  const tiers = [
-    {
-      name: 'Starter',
-      price: '$2,500',
-      period: '/month',
-      description: 'For early-stage companies getting started with outbound.',
-      features: [
-        { name: '1 Outbound Channel', included: true },
-        { name: '500 Prospects/Month', included: true },
-        { name: 'Weekly Reporting', included: true },
-        { name: 'Email Support', included: true },
-        { name: 'CRM Integration', included: false },
-        { name: 'Dedicated SDR', included: false },
-        { name: 'Strategy Calls', included: false },
-      ],
-      cta: 'Get Started',
-      highlighted: false,
-    },
-    {
-      name: 'Growth',
-      price: '$5,000',
-      period: '/month',
-      description: 'For scaling teams expanding their pipeline generation.',
-      features: [
-        { name: 'Multi-Channel Outbound', included: true },
-        { name: '1,500 Prospects/Month', included: true },
-        { name: 'Bi-Weekly Strategy Calls', included: true },
-        { name: 'CRM Integration', included: true },
-        { name: 'Dedicated SDR', included: true },
-        { name: 'Weekly Reporting', included: true },
-        { name: 'Priority Support', included: true },
-      ],
-      cta: 'Get Started',
-      highlighted: true,
-    },
-    {
-      name: 'Scale',
-      price: 'Custom',
-      period: 'pricing',
-      description: 'Full outbound engine with unlimited capacity and support.',
-      features: [
-        { name: 'Unlimited Channels', included: true },
-        { name: 'Custom Volume', included: true },
-        { name: 'Daily Reporting & Dashboards', included: true },
-        { name: 'Multiple Dedicated SDRs', included: true },
-        { name: 'Full Pipeline Management', included: true },
-        { name: 'Direct Leadership Access', included: true },
-        { name: 'Custom SLAs', included: true },
-      ],
-      cta: 'Talk to Sales',
-      highlighted: false,
-    },
-  ];
+  const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '' });
+  const [isLoading, setIsLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(false);
 
-  const comparisonFeatures = [
-    {
-      category: 'Outreach',
-      items: [
-        { name: 'Email Outreach', starter: true, growth: true, scale: true },
-        { name: 'LinkedIn Outreach', starter: false, growth: true, scale: true },
-        { name: 'Phone Calling', starter: false, growth: true, scale: true },
-        { name: 'Multi-Channel Sequences', starter: false, growth: true, scale: true },
-      ],
-    },
-    {
-      category: 'Pipeline Management',
-      items: [
-        { name: 'Lead Qualification', starter: true, growth: true, scale: true },
-        { name: 'CRM Sync', starter: false, growth: true, scale: true },
-        { name: 'Automated Follow-ups', starter: false, growth: true, scale: true },
-        { name: 'Pipeline Reporting', starter: true, growth: true, scale: true },
-      ],
-    },
-    {
-      category: 'Support & Strategy',
-      items: [
-        { name: 'Monthly Strategy Review', starter: false, growth: true, scale: true },
-        { name: 'Dedicated Account Manager', starter: false, growth: true, scale: true },
-        { name: 'Direct Leadership Access', starter: false, growth: false, scale: true },
-        { name: 'Bi-Weekly Optimization Calls', starter: false, growth: true, scale: true },
-      ],
-    },
-  ];
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError(false);
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/rmmittal@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ _subject: 'Pricing Inquiry from LetRevenueFlow', ...formData }),
+      });
+      if (res.ok) { setSubmitted(true); } else { setError(true); }
+    } catch { setError(true); } finally { setIsLoading(false); }
+  };
 
   const faqItems = [
     {
-      question: 'What if I need a custom volume between tiers?',
-      answer:
-        'No problem. We offer custom configurations at every level. Contact our sales team to discuss your specific needs and we\'ll create a plan that fits your goals and budget.',
+      question: 'How is pricing structured?',
+      answer: 'We offer flexible engagement models tailored to your goals, team size, and growth stage. Every engagement is custom-scoped after an initial discovery call.',
     },
     {
-      question: 'Is there a setup fee?',
-      answer:
-        'No hidden fees. Your monthly fee covers all service delivery, CRM integration, reporting, and support. Some clients opt for a separate strategy consultation ($2,000-$5,000) to accelerate onboarding.',
+      question: 'Is there a minimum commitment?',
+      answer: 'We typically recommend a minimum engagement period to allow campaigns to ramp up and optimize. The specifics depend on your goals and the services selected.',
     },
     {
-      question: 'What\'s the minimum commitment?',
-      answer:
-        'We recommend starting with a 30-day pilot to establish baseline metrics, validate quality, and refine targeting. Most clients move into 3-6 month engagements after the pilot.',
+      question: 'What is included in every engagement?',
+      answer: 'Every engagement includes campaign strategy, ICP definition, targeting, outreach execution, qualification, and regular reporting. The scope and channels vary based on your needs.',
     },
     {
-      question: 'Can I upgrade or downgrade during my contract?',
-      answer:
-        'Yes. We understand your needs may change. You can upgrade anytime. Downgrades require 30 days notice to adjust your account structure.',
+      question: 'Do you offer performance-based pricing?',
+      answer: 'We can discuss performance-based or hybrid models depending on the engagement scope. We believe in aligning incentives with your revenue goals.',
     },
     {
-      question: 'What metrics are included in reporting?',
-      answer:
-        'All plans include emails sent, open rates, response rates, qualified leads generated, cost per lead, and pipeline value created. Growth and Scale plans include deeper analytics on campaign performance and conversion funnels.',
-    },
-    {
-      question: 'Do you offer a money-back guarantee?',
-      answer:
-        'We focus on long-term partnerships, not quick wins. If you\'re not seeing results after 60 days, we\'ll conduct a free strategy audit and adjust your approach at no additional cost.',
+      question: 'Can I start small and scale up?',
+      answer: 'Absolutely. Many of our clients start with a focused engagement and expand as they see results. We design our services to be modular and scalable.',
     },
   ];
 
   return (
     <div className="w-full overflow-hidden bg-white">
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-center pt-20 pb-12 md:pb-24">
+      <section className="relative min-h-[60vh] flex items-center pt-20 pb-12 md:pb-24">
         <div className="absolute inset-0 bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 z-0">
           <div className="absolute inset-0 opacity-20">
             <svg className="w-full h-full" viewBox="0 0 1200 800">
@@ -161,244 +70,140 @@ export default function Pricing() {
           </div>
         </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl mx-auto"
-          >
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-              Transparent Engagement Models for Predictable Growth
+              Custom Engagement Models for Predictable Growth
             </h1>
-            <p className="text-xl md:text-2xl text-navy-100 mb-8 leading-relaxed">
-              Choose the plan that fits your team size, goals, and growth stage. All plans include dedicated support and transparent reporting.
+            <p className="text-xl md:text-2xl text-navy-100 mb-8 leading-relaxed max-w-3xl mx-auto">
+              Every business is different. We design outbound programs tailored to your goals, industry, and growth stage — not one-size-fits-all packages.
             </p>
+            <a href="#pricing-contact" className="inline-block px-8 py-4 bg-electric-600 text-white font-bold rounded-lg hover:bg-electric-700 transition-colors shadow-xl text-lg">
+              Talk to Us About Pricing
+            </a>
           </motion.div>
         </div>
       </section>
 
-      {/* Pricing Tiers */}
+      {/* What Every Engagement Includes */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-          >
-            {tiers.map((tier, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className={`rounded-lg border-2 p-8 md:p-10 flex flex-col ${
-                  tier.highlighted
-                    ? 'border-electric-600 bg-electric-50 shadow-xl'
-                    : 'border-gray-200 bg-white'
-                }`}
-              >
-                {tier.highlighted && (
-                  <div className="mb-4">
-                    <span className="inline-block px-4 py-1 bg-electric-600 text-white text-sm font-bold rounded-full">
-                      Most Popular
-                    </span>
-                  </div>
-                )}
-                <h3 className="text-2xl font-bold text-navy-900 mb-2">{tier.name}</h3>
-                <p className="text-navy-600 text-sm mb-6 min-h-[2.5rem]">{tier.description}</p>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-navy-900 mb-6">What Every Engagement Includes</h2>
+            <p className="text-lg text-navy-700 max-w-2xl mx-auto">Regardless of scope, every client gets the strategic foundation needed for predictable pipeline growth.</p>
+          </motion.div>
 
-                <div className="mb-8">
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-4xl md:text-5xl font-bold text-navy-900">
-                      {tier.price}
-                    </span>
-                    {tier.period && (
-                      <span className="text-navy-600 font-medium">{tier.period}</span>
-                    )}
-                  </div>
-                </div>
-
-                <Link
-                  href={tier.name === 'Scale' ? '/book-a-call' : '/contact'}
-                  className={`w-full py-3 px-6 font-medium rounded-lg text-center transition-all mb-8 ${
-                    tier.highlighted
-                      ? 'bg-electric-600 text-white hover:bg-electric-700'
-                      : 'border border-electric-600 text-electric-600 hover:bg-electric-50'
-                  }`}
-                >
-                  {tier.cta}
-                </Link>
-
-                <div className="space-y-4 flex-grow">
-                  <p className="font-semibold text-navy-900 text-sm">What's included:</p>
-                  {tier.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-start gap-3">
-                      {feature.included ? (
-                        <Check className="w-5 h-5 text-electric-600 flex-shrink-0 mt-0.5" />
-                      ) : (
-                        <X className="w-5 h-5 text-gray-300 flex-shrink-0 mt-0.5" />
-                      )}
-                      <span
-                        className={
-                          feature.included ? 'text-navy-700' : 'text-gray-400'
-                        }
-                      >
-                        {feature.name}
-                      </span>
-                    </div>
-                  ))}
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              'ICP Definition & Targeting Strategy',
+              'Campaign Design & Messaging',
+              'Multi-Channel Outreach Execution',
+              'Lead Qualification & Handoff',
+              'Regular Reporting & Analytics',
+              'Dedicated Account Management',
+              'CRM Integration Support',
+              'Continuous Campaign Optimization',
+              'Transparent Communication',
+            ].map((item, index) => (
+              <motion.div key={index} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.05 }}
+                className="flex items-start gap-3 p-4 bg-navy-50 rounded-lg">
+                <CheckCircle className="w-5 h-5 text-electric-600 flex-shrink-0 mt-0.5" />
+                <span className="text-navy-900 font-medium">{item}</span>
               </motion.div>
             ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Feature Comparison Table */}
-      <section className="py-16 md:py-24 bg-navy-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="mb-12"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-navy-900 mb-4">
-              Detailed Feature Comparison
-            </h2>
-            <p className="text-xl text-navy-600">See exactly what's included in each plan</p>
-          </motion.div>
-
-          <div className="overflow-x-auto">
-            <table className="w-full bg-white rounded-lg overflow-hidden border border-gray-200">
-              <thead>
-                <tr className="border-b border-gray-200 bg-navy-50">
-                  <th className="px-6 py-4 text-left font-bold text-navy-900">Feature</th>
-                  <th className="px-6 py-4 text-center font-bold text-navy-900">Starter</th>
-                  <th className="px-6 py-4 text-center font-bold text-navy-900">Growth</th>
-                  <th className="px-6 py-4 text-center font-bold text-navy-900">Scale</th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparisonFeatures.map((category, catIdx) => (
-                  <div key={catIdx}>
-                    {category.items.map((item, itemIdx) => (
-                      <tr
-                        key={itemIdx}
-                        className="border-b border-gray-200 hover:bg-navy-50 transition-colors"
-                      >
-                        <td className="px-6 py-4 text-navy-900 font-medium">
-                          {item.name}
-                        </td>
-                        <td className="px-6 py-4 text-center">
-                          {item.starter ? (
-                            <Check className="w-5 h-5 text-electric-600 mx-auto" />
-                          ) : (
-                            <X className="w-5 h-5 text-gray-300 mx-auto" />
-                          )}
-                        </td>
-                        <td className="px-6 py-4 text-center">
-                          {item.growth ? (
-                            <Check className="w-5 h-5 text-electric-600 mx-auto" />
-                          ) : (
-                            <X className="w-5 h-5 text-gray-300 mx-auto" />
-                          )}
-                        </td>
-                        <td className="px-6 py-4 text-center">
-                          {item.scale ? (
-                            <Check className="w-5 h-5 text-electric-600 mx-auto" />
-                          ) : (
-                            <X className="w-5 h-5 text-gray-300 mx-auto" />
-                          )}
-                        </td>
-                      </tr>
-                    ))}
-                    {catIdx < comparisonFeatures.length - 1 && (
-                      <tr>
-                        <td colSpan={4} className="h-2 bg-gray-100" />
-                      </tr>
-                    )}
-                  </div>
-                ))}
-              </tbody>
-            </table>
           </div>
         </div>
       </section>
 
-      {/* Custom Inquiry CTA */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-navy-900 mb-6">
-              Need a Custom Outbound Engine?
-            </h2>
-            <p className="text-xl text-navy-600 mb-10 max-w-2xl mx-auto">
-              Running a high-volume operation or need a fully custom solution? Our Scale plan can be tailored to your exact specifications.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="px-8 py-3 bg-electric-600 text-white font-medium rounded-lg hover:bg-electric-700 transition-colors shadow-lg"
-              >
-                Get a Custom Quote
-              </Link>
-              <Link
-                href="/book-a-call"
-                className="px-8 py-3 border border-electric-400 text-electric-600 font-medium rounded-lg hover:bg-navy-50 transition-colors"
-              >
-                Schedule a Consultation
-              </Link>
-            </div>
+      {/* How We Work */}
+      <section className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-navy-900 mb-6">How We Scope Engagements</h2>
+            <p className="text-lg text-navy-700 max-w-2xl mx-auto">We start with understanding your goals and design a program that fits.</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { step: '01', title: 'Discovery Call', desc: 'We learn about your business, goals, current pipeline, and challenges. No obligation.' },
+              { step: '02', title: 'Custom Proposal', desc: 'Based on our conversation, we design a tailored engagement with clear deliverables and expectations.' },
+              { step: '03', title: 'Launch & Optimize', desc: 'We execute, measure, report, and continuously improve. You see exactly what is happening and why.' },
+            ].map((item, index) => (
+              <motion.div key={index} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: index * 0.15 }}
+                className="bg-white rounded-xl border border-gray-200 p-8 hover:shadow-lg transition-shadow text-center">
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-electric-600 text-white font-bold text-xl mb-5">{item.step}</div>
+                <h3 className="text-xl font-bold text-navy-900 mb-3">{item.title}</h3>
+                <p className="text-navy-700">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact for Pricing */}
+      <section id="pricing-contact" className="py-16 md:py-24 bg-navy-50">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+            <h2 className="text-3xl md:text-4xl font-bold text-navy-900 mb-3 text-center">Get a Custom Quote</h2>
+            <p className="text-lg text-navy-600 mb-10 text-center">Tell us about your goals and we will put together a proposal that fits.</p>
+
+            {submitted ? (
+              <div className="bg-white rounded-xl shadow-lg p-12 text-center">
+                <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-6" />
+                <h3 className="text-2xl font-bold text-navy-900 mb-3">Thank You!</h3>
+                <p className="text-navy-700 text-lg">We have received your inquiry and will get back to you within 24 hours.</p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-lg p-8 space-y-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div>
+                    <label className="block text-sm font-medium text-navy-900 mb-1.5">Full Name *</label>
+                    <input required type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Your name" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-electric-600" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-navy-900 mb-1.5">Work Email *</label>
+                    <input required type="email" name="email" value={formData.email} onChange={handleChange} placeholder="your@company.com" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-electric-600" />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-navy-900 mb-1.5">Company Name *</label>
+                  <input required type="text" name="company" value={formData.company} onChange={handleChange} placeholder="Your company" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-electric-600" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-navy-900 mb-1.5">Tell us about your goals</label>
+                  <textarea name="message" value={formData.message} onChange={handleChange} rows={4} placeholder="What services are you interested in? What are your pipeline goals?" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-electric-600 resize-none" />
+                </div>
+                {error && <p className="text-red-600 text-sm flex items-center gap-1"><AlertCircle className="w-4 h-4" />Something went wrong. Please try again.</p>}
+                <button type="submit" disabled={isLoading} className="w-full px-6 py-4 bg-electric-600 text-white font-bold rounded-lg hover:bg-electric-700 transition-colors disabled:opacity-50 text-lg">{isLoading ? 'Sending...' : 'Request Custom Quote'}</button>
+              </form>
+            )}
           </motion.div>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-16 md:py-24 bg-navy-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="mb-12"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-navy-900 mb-4">
-              Pricing Questions
-            </h2>
-            <p className="text-xl text-navy-600">
-              Answers to common questions about pricing and our engagement model
-            </p>
+      {/* FAQ */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-navy-900 mb-6">Pricing FAQ</h2>
           </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <FAQAccordion items={faqItems} />
-          </motion.div>
+          <FAQAccordion items={faqItems} />
         </div>
       </section>
 
       {/* Final CTA */}
-      <CTASection
-        headline="Ready to Build Your Outbound Machine?"
-        description="Let's talk about which plan fits your team and how we can help you build a predictable pipeline."
-        primaryButtonText="Schedule a Call"
-        primaryButtonHref="/book-a-call"
-        secondaryButtonText="Get in Touch"
-        secondaryButtonHref="/contact"
-      />
+      <section className="py-16 md:py-24 bg-gradient-to-r from-navy-900 to-navy-800">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Ready to Discuss Your Growth Goals?</h2>
+            <p className="text-xl text-navy-200 mb-10 max-w-2xl mx-auto">Book a call with our team to explore how we can help build your revenue pipeline.</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/book-a-call" className="inline-flex items-center gap-2 px-8 py-4 bg-electric-600 text-white font-bold rounded-lg hover:bg-electric-700 transition-colors text-lg">Book Strategy Call <ArrowRight className="w-5 h-5" /></Link>
+              <Link href="/contact" className="inline-block px-8 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white/10 transition-colors text-lg">Contact Us</Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 }

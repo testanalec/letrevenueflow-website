@@ -1,7 +1,8 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle, Clock, Users, Target } from 'lucide-react';
+import { CheckCircle, Clock, Users, Target, AlertCircle } from 'lucide-react';
 import CTASection from '@/components/CTASection';
 
 const containerVariants = {
@@ -23,6 +24,99 @@ const itemVariants = {
     transition: { duration: 0.8, easing: 'easeOut' },
   },
 };
+
+function StrategyCallForm() {
+  const [formData, setFormData] = useState({ name: '', email: '', company: '', phone: '', service: '', preferredTime: '', message: '' });
+  const [isLoading, setIsLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError(false);
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/rmmittal@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ _subject: 'New Strategy Call Request from LetRevenueFlow', ...formData }),
+      });
+      if (res.ok) { setSubmitted(true); } else { setError(true); }
+    } catch { setError(true); } finally { setIsLoading(false); }
+  };
+
+  if (submitted) {
+    return (
+      <section id="strategy-form" className="py-16 md:py-24 bg-navy-50">
+        <div className="max-w-2xl mx-auto px-4 text-center">
+          <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-6" />
+          <h3 className="text-3xl font-bold text-navy-900 mb-4">Request Received!</h3>
+          <p className="text-lg text-navy-700">Thank you for your interest. We will review your details and get back to you within 24 hours to schedule your strategy call.</p>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section id="strategy-form" className="py-16 md:py-24 bg-navy-50">
+      <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+          <h2 className="text-3xl md:text-4xl font-bold text-navy-900 mb-3 text-center">Request Your Strategy Call</h2>
+          <p className="text-lg text-navy-600 mb-10 text-center">Fill out the form below and we will reach out within 24 hours to schedule your call.</p>
+
+          <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-lg p-8 space-y-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div>
+                <label className="block text-sm font-medium text-navy-900 mb-1.5">Full Name *</label>
+                <input required type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Your name" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-electric-600" />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-navy-900 mb-1.5">Work Email *</label>
+                <input required type="email" name="email" value={formData.email} onChange={handleChange} placeholder="your@company.com" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-electric-600" />
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div>
+                <label className="block text-sm font-medium text-navy-900 mb-1.5">Company Name *</label>
+                <input required type="text" name="company" value={formData.company} onChange={handleChange} placeholder="Your company" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-electric-600" />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-navy-900 mb-1.5">Phone Number</label>
+                <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="+91 XXXXX XXXXX" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-electric-600" />
+              </div>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-navy-900 mb-1.5">Service Interested In *</label>
+              <select required name="service" value={formData.service} onChange={handleChange} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-electric-600">
+                <option value="">Select a service...</option>
+                <option value="Lead Generation">Lead Generation</option>
+                <option value="Appointment Setting">Appointment Setting</option>
+                <option value="Outbound Sales Campaigns">Outbound Sales Campaigns</option>
+                <option value="Revenue Pipeline Management">Revenue Pipeline Management</option>
+                <option value="Not Sure">Not Sure Yet</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-navy-900 mb-1.5">Preferred Date / Time</label>
+              <input type="text" name="preferredTime" value={formData.preferredTime} onChange={handleChange} placeholder="e.g., Weekdays after 2pm IST" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-electric-600" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-navy-900 mb-1.5">Message / Notes</label>
+              <textarea name="message" value={formData.message} onChange={handleChange} rows={4} placeholder="Tell us briefly about your goals or challenges..." className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-electric-600 resize-none" />
+            </div>
+            {error && <p className="text-red-600 text-sm flex items-center gap-1"><AlertCircle className="w-4 h-4" />Something went wrong. Please try again or email us directly.</p>}
+            <button type="submit" disabled={isLoading} className="w-full px-6 py-4 bg-electric-600 text-white font-bold rounded-lg hover:bg-electric-700 transition-colors disabled:opacity-50 text-lg">{isLoading ? 'Sending...' : 'Request Strategy Call'}</button>
+            <p className="text-xs text-navy-500 text-center">We respect your privacy. Your information will never be shared with third parties.</p>
+          </form>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
 
 export default function BookACall() {
   const qualifications = [
@@ -165,42 +259,8 @@ export default function BookACall() {
         </div>
       </section>
 
-      {/* Calendar Embed Section */}
-      <section className="py-16 md:py-24 bg-navy-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="bg-white rounded-lg shadow-lg overflow-hidden"
-          >
-            {/* Calendar Placeholder */}
-            <div className="h-[600px] bg-gradient-to-b from-navy-50 to-white flex items-center justify-center border-b border-gray-200">
-              <div className="text-center">
-                <Clock className="w-16 h-16 text-navy-300 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold text-navy-900 mb-2">
-                  Calendly Embed
-                </h3>
-                <p className="text-navy-600 max-w-xs">
-                  Interactive calendar would be embedded here in production. Select your preferred date and time to get started.
-                </p>
-              </div>
-            </div>
-
-            {/* Info Text Below Calendar */}
-            <div className="p-8 bg-white">
-              <h3 className="font-semibold text-navy-900 mb-3">What to expect:</h3>
-              <ul className="space-y-2 text-navy-700 text-sm">
-                <li>⏱️ 30-minute strategy call</li>
-                <li>💬 Discussion of your pipeline goals</li>
-                <li>📊 Assessment of your current situation</li>
-                <li>🎯 Next steps if there's mutual fit</li>
-              </ul>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      {/* Strategy Call Request Form */}
+      <StrategyCallForm />
 
       {/* What to Expect */}
       <section className="py-16 md:py-24 bg-white">
@@ -353,13 +413,11 @@ export default function BookACall() {
               Ready to Talk Strategy?
             </h2>
             <p className="text-lg text-navy-100 mb-10 max-w-2xl mx-auto">
-              Pick a time that works for you. Our calendar is updated in real-time so you can book directly.
+              Fill out the form above and we will get back to you within 24 hours to schedule your call.
             </p>
-            <div className="inline-block">
-              <div className="px-8 py-3 bg-electric-600 text-white font-medium rounded-lg">
-                Calendar loading...
-              </div>
-            </div>
+            <a href="#strategy-form" className="inline-block px-8 py-3 bg-electric-600 text-white font-medium rounded-lg hover:bg-electric-700 transition-colors">
+              Fill Out the Form
+            </a>
           </motion.div>
         </div>
       </section>

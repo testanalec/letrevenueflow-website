@@ -1,7 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FileText, Download } from 'lucide-react';
+import { FileText, Download, CheckCircle } from 'lucide-react';
+import { useState, useRef } from 'react';
 import CTASection from '@/components/CTASection';
 
 const containerVariants = {
@@ -25,6 +26,44 @@ const itemVariants = {
 };
 
 export default function Resources() {
+  const [resourcesNewsletterSubmitted, setResourcesNewsletterSubmitted] = useState(false);
+  const [resourcesNewsletterLoading, setResourcesNewsletterLoading] = useState(false);
+  const resourcesNewsletterFormRef = useRef<HTMLFormElement>(null);
+
+  const handleResourcesNewsletterSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setResourcesNewsletterLoading(true);
+
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get('email');
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/rmmittal@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          _subject: 'New Resources Newsletter Subscription from LetRevenueFlow',
+        }),
+      });
+
+      if (response.ok) {
+        setResourcesNewsletterSubmitted(true);
+        if (resourcesNewsletterFormRef.current) {
+          resourcesNewsletterFormRef.current.reset();
+        }
+        setTimeout(() => setResourcesNewsletterSubmitted(false), 5000);
+      }
+    } catch (error) {
+      console.error('Newsletter submission error:', error);
+    } finally {
+      setResourcesNewsletterLoading(false);
+    }
+  };
+
   const resources = [
     {
       id: 1,
@@ -154,30 +193,46 @@ export default function Resources() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-navy-900 mb-4">
-              Get New Resources
-            </h2>
-            <p className="text-lg text-navy-600 mb-10">
-              We release new templates, guides, and frameworks regularly. Subscribe to get them delivered to your inbox.
-            </p>
+            {resourcesNewsletterSubmitted ? (
+              <div className="flex flex-col items-center justify-center">
+                <CheckCircle className="w-16 h-16 text-electric-600 mb-4" />
+                <h2 className="text-3xl md:text-4xl font-bold text-navy-900 mb-4">
+                  You're Subscribed!
+                </h2>
+                <p className="text-lg text-navy-600">
+                  Thanks for subscribing. New resources will be sent to your inbox.
+                </p>
+              </div>
+            ) : (
+              <>
+                <h2 className="text-3xl md:text-4xl font-bold text-navy-900 mb-4">
+                  Get New Resources
+                </h2>
+                <p className="text-lg text-navy-600 mb-10">
+                  We release new templates, guides, and frameworks regularly. Subscribe to get them delivered to your inbox.
+                </p>
 
-            <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="your@company.com"
-                className="flex-grow px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-electric-600"
-                required
-              />
-              <button
-                type="submit"
-                className="px-6 py-3 bg-electric-600 text-white font-medium rounded-lg hover:bg-electric-700 transition-colors whitespace-nowrap"
-              >
-                Subscribe
-              </button>
-            </form>
-            <p className="text-sm text-navy-500 mt-4">
-              We'll send you resources once a week. No spam, ever. You can unsubscribe anytime.
-            </p>
+                <form ref={resourcesNewsletterFormRef} onSubmit={handleResourcesNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="your@company.com"
+                    className="flex-grow px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-electric-600"
+                    required
+                  />
+                  <button
+                    type="submit"
+                    disabled={resourcesNewsletterLoading}
+                    className="px-6 py-3 bg-electric-600 text-white font-medium rounded-lg hover:bg-electric-700 transition-colors whitespace-nowrap disabled:opacity-75 disabled:cursor-not-allowed"
+                  >
+                    {resourcesNewsletterLoading ? 'Subscribing...' : 'Subscribe'}
+                  </button>
+                </form>
+                <p className="text-sm text-navy-500 mt-4">
+                  We'll send you resources once a week. No spam, ever. You can unsubscribe anytime.
+                </p>
+              </>
+            )}
           </motion.div>
         </div>
       </section>
