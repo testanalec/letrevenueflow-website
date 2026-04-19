@@ -3,6 +3,7 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, Calendar, Clock, CheckCircle } from 'lucide-react';
 import CTASection from '@/components/CTASection';
 
@@ -84,7 +85,7 @@ export default function Blog() {
       category: 'Outbound Sales',
       date: '2024-04-15',
       readTime: '8 min read',
-      gradient: 'from-blue-500 to-purple-600',
+      image: '/blog/cold-outreach-fundamentals.jpg',
     },
     {
       id: 'lead-scoring-strategy',
@@ -95,7 +96,7 @@ export default function Blog() {
       category: 'Lead Generation',
       date: '2024-04-12',
       readTime: '10 min read',
-      gradient: 'from-emerald-500 to-teal-600',
+      image: '/blog/lead-scoring-strategy.jpg',
     },
     {
       id: 'appointment-setting-guide',
@@ -106,7 +107,7 @@ export default function Blog() {
       category: 'Appointment Setting',
       date: '2024-04-10',
       readTime: '12 min read',
-      gradient: 'from-orange-500 to-red-600',
+      image: '/blog/appointment-setting-guide.jpg',
     },
     {
       id: 'saas-pipeline-leak',
@@ -117,7 +118,7 @@ export default function Blog() {
       category: 'SaaS Growth',
       date: '2024-04-08',
       readTime: '9 min read',
-      gradient: 'from-pink-500 to-rose-600',
+      image: '/blog/saas-pipeline-leak.jpg',
     },
     {
       id: 'revenue-ops-framework',
@@ -128,7 +129,7 @@ export default function Blog() {
       category: 'Revenue Operations',
       date: '2024-04-05',
       readTime: '11 min read',
-      gradient: 'from-indigo-500 to-blue-600',
+      image: '/blog/revenue-ops-framework.jpg',
     },
     {
       id: 'personalization-at-scale',
@@ -139,7 +140,7 @@ export default function Blog() {
       category: 'Outbound Sales',
       date: '2024-04-01',
       readTime: '7 min read',
-      gradient: 'from-cyan-500 to-blue-600',
+      image: '/blog/personalization-at-scale.jpg',
     },
   ];
 
@@ -237,9 +238,14 @@ export default function Blog() {
                   variants={itemVariants}
                   className="flex flex-col overflow-hidden rounded-lg border border-gray-200 hover:shadow-lg transition-shadow"
                 >
-                  {/* Image Gradient Placeholder */}
-                  <Link href={`/blog/${post.slug}`} className={`h-48 overflow-hidden bg-gradient-to-br ${(post as any).gradient}`}>
-                    <div className="w-full h-full hover:scale-105 transition-transform duration-300" />
+                  {/* Blog Image */}
+                  <Link href={`/blog/${post.slug}`} className="block h-48 overflow-hidden relative">
+                    <Image
+                      src={(post as any).image}
+                      alt={post.title}
+                      fill
+                      className="object-cover hover:scale-105 transition-transform duration-300"
+                    />
                   </Link>
 
                   {/* Content */}

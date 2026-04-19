@@ -1,12 +1,6 @@
 import type { Metadata } from 'next';
 import CaseStudyContent from './content';
 
-interface PageProps {
-  params: {
-    slug: string;
-  };
-}
-
 const caseStudyMetadata: Record<string, { title: string; description: string }> = {
   'saas-pipeline-growth': {
     title: 'SaaS Pipeline Growth Case Study — LetRevenueFlow',
@@ -23,9 +17,10 @@ const caseStudyMetadata: Record<string, { title: string; description: string }> 
 };
 
 export async function generateMetadata(
-  { params }: PageProps
+  { params }: { params: Promise<{ slug: string }> }
 ): Promise<Metadata> {
-  const meta = caseStudyMetadata[params.slug];
+  const { slug } = await params;
+  const meta = caseStudyMetadata[slug];
 
   return {
     title: meta?.title || 'Case Study — LetRevenueFlow',
@@ -33,7 +28,7 @@ export async function generateMetadata(
     openGraph: {
       title: meta?.title || 'Case Study',
       description: meta?.description || 'Real results from B2B lead generation campaigns.',
-      url: `https://letrevenueflow.com/case-studies/${params.slug}`,
+      url: `https://letrevenueflow.com/case-studies/${slug}`,
       type: 'website',
     },
   };
@@ -47,6 +42,7 @@ export function generateStaticParams() {
   ];
 }
 
-export default function CaseStudyPage({ params }: PageProps) {
-  return <CaseStudyContent slug={params.slug} />;
+export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  return <CaseStudyContent slug={slug} />;
 }

@@ -46,10 +46,10 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
             <Image
-              src="/logo.svg"
+              src="/logo.png"
               alt="LetRevenueFlow"
-              width={180}
-              height={40}
+              width={200}
+              height={46}
               priority
             />
           </Link>

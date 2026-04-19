@@ -11,6 +11,7 @@ interface BlogPost {
   author: string;
   authorBio: string;
   content: string;
+  image: string;
 }
 
 const blogPosts: Record<string, BlogPost> = {
@@ -23,6 +24,7 @@ const blogPosts: Record<string, BlogPost> = {
     category: 'Outbound Sales',
     date: '2024-04-15',
     readTime: '8 min read',
+    image: '/blog/cold-outreach-fundamentals.jpg',
     author: 'Rahul Mittal',
     authorBio:
       'Rahul is the founder of LetRevenueFlow and has extensive experience building B2B revenue engines. He specializes in outbound strategy and pipeline development.',
@@ -111,6 +113,7 @@ const blogPosts: Record<string, BlogPost> = {
     category: 'Lead Generation',
     date: '2024-04-12',
     readTime: '10 min read',
+    image: '/blog/lead-scoring-strategy.jpg',
     author: 'Rahul Mittal',
     authorBio:
       'Rahul is the founder of LetRevenueFlow and has extensive experience building B2B revenue engines. He specializes in lead generation and qualification.',
@@ -181,6 +184,7 @@ const blogPosts: Record<string, BlogPost> = {
     category: 'Appointment Setting',
     date: '2024-04-10',
     readTime: '12 min read',
+    image: '/blog/appointment-setting-guide.jpg',
     author: 'Rahul Mittal',
     authorBio:
       'Rahul is the founder of LetRevenueFlow and has extensive experience building B2B revenue engines. He specializes in appointment setting and sales enablement.',
@@ -261,6 +265,7 @@ const blogPosts: Record<string, BlogPost> = {
     category: 'SaaS Growth',
     date: '2024-04-08',
     readTime: '9 min read',
+    image: '/blog/saas-pipeline-leak.jpg',
     author: 'Rahul Mittal',
     authorBio:
       'Rahul is the founder of LetRevenueFlow and has extensive experience building B2B revenue engines. He specializes in SaaS pipeline strategy.',
@@ -333,6 +338,7 @@ const blogPosts: Record<string, BlogPost> = {
     category: 'Revenue Operations',
     date: '2024-04-05',
     readTime: '11 min read',
+    image: '/blog/revenue-ops-framework.jpg',
     author: 'Rahul Mittal',
     authorBio:
       'Rahul is the founder of LetRevenueFlow and has extensive experience building B2B revenue engines. He specializes in revenue operations and growth strategy.',
@@ -408,6 +414,7 @@ const blogPosts: Record<string, BlogPost> = {
     category: 'Outbound Sales',
     date: '2024-04-01',
     readTime: '7 min read',
+    image: '/blog/personalization-at-scale.jpg',
     author: 'Rahul Mittal',
     authorBio:
       'Rahul is the founder of LetRevenueFlow and has extensive experience building B2B revenue engines. He specializes in outbound strategy and personalization.',
@@ -489,7 +496,8 @@ export function generateStaticParams() {
   ];
 }
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-  const post = blogPosts[params.slug];
-  return <BlogPostContent params={params} post={post} blogPosts={blogPosts} />;
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = blogPosts[slug];
+  return <BlogPostContent params={{ slug }} post={post} blogPosts={blogPosts} />;
 }

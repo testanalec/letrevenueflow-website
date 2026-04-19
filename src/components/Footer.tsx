@@ -46,10 +46,10 @@ export default function Footer() {
           <div>
             <Link href="/" className="inline-block mb-4">
               <Image
-                src="/logo-white.svg"
+                src="/logo-white.png"
                 alt="LetRevenueFlow"
-                width={180}
-                height={40}
+                width={200}
+                height={46}
               />
             </Link>
             <p className="text-navy-300 text-sm leading-relaxed mb-4">

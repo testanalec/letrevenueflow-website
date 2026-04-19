@@ -11,8 +11,10 @@ interface BlogPost {
   author: string;
   authorBio: string;
   content: string;
+  image: string;
 }
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowLeft, Calendar, Clock, User, ArrowRight } from 'lucide-react';
@@ -66,6 +68,19 @@ export default function BlogPostContent({ params, post: initialPost, blogPosts: 
         </div>
       </section>
 
+      {/* Hero Image */}
+      {post.image && (
+        <section className="relative w-full h-64 md:h-96">
+          <Image
+            src={post.image}
+            alt={post.title}
+            fill
+            className="object-cover"
+            priority
+          />
+        </section>
+      )}
+
       {/* Post Header */}
       <section className="py-12 md:py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -109,10 +124,31 @@ export default function BlogPostContent({ params, post: initialPost, blogPosts: 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="prose prose-navy max-w-none"
+            className="max-w-none"
           >
-            <div className="text-lg text-navy-700 leading-relaxed space-y-6 whitespace-pre-wrap">
-              {post.content}
+            <div className="text-lg text-navy-700 leading-relaxed space-y-4">
+              {post.content.split('\n').map((line, i) => {
+                const trimmed = line.trim();
+                if (!trimmed) return null;
+                if (trimmed.startsWith('## ')) {
+                  return <h2 key={i} className="text-2xl md:text-3xl font-bold text-navy-900 mt-10 mb-4">{trimmed.replace('## ', '')}</h2>;
+                }
+                if (trimmed.startsWith('- **')) {
+                  const match = trimmed.match(/^- \*\*(.+?)\*\*(.*)$/);
+                  if (match) {
+                    return <li key={i} className="ml-6 list-disc"><strong className="text-navy-900">{match[1]}</strong>{match[2]}</li>;
+                  }
+                }
+                if (trimmed.startsWith('- ')) {
+                  return <li key={i} className="ml-6 list-disc">{trimmed.replace('- ', '')}</li>;
+                }
+                // Handle bold text within paragraphs
+                const parts = trimmed.split(/\*\*(.+?)\*\*/g);
+                if (parts.length > 1) {
+                  return <p key={i}>{parts.map((part, j) => j % 2 === 1 ? <strong key={j} className="text-navy-900">{part}</strong> : part)}</p>;
+                }
+                return <p key={i}>{trimmed}</p>;
+              })}
             </div>
           </motion.div>
         </div>
