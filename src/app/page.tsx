@@ -439,47 +439,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-16 md:py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="max-w-2xl mx-auto text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-navy-900 mb-6">
-              What Our Clients Say
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <TestimonialCard
-              quote="LetRevenueFlow transformed our outbound approach. Pipeline went from unpredictable to predictable. ROI has been exceptional."
-              name="Sarah Chen"
-              title="VP Sales"
-              company="TechVenture SaaS"
-              rating={5}
-            />
-            <TestimonialCard
-              quote="The team understands enterprise sales. They built a playbook that works for our complex deals. Highly recommend."
-              name="Michael Rodriguez"
-              title="CEO"
-              company="Enterprise IT Solutions"
-              rating={5}
-            />
-            <TestimonialCard
-              quote="Finally, someone who gets that lead gen is about quality, not quantity. Our show rate improved dramatically in just a few months."
-              name="Jennifer Walsh"
-              title="Managing Director"
-              company="Grant Thornton Advisory"
-              rating={5}
-            />
-          </div>
-        </div>
-      </section>
-
       {/* Free Audit Offer Section */}
       <section className="py-16 md:py-24 bg-gradient-to-r from-navy-900 to-navy-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
