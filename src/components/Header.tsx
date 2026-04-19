@@ -49,7 +49,7 @@ export default function Header() {
               src="/logo.png"
               alt="LetRevenueFlow"
               width={200}
-              height={46}
+              height={72}
               priority
             />
           </Link>
@@ -115,12 +115,6 @@ export default function Header() {
               About
             </Link>
 
-            <Link
-              href="/blog"
-              className="px-3 py-2 text-sm font-medium text-navy-900 hover:text-electric-600 transition-colors"
-            >
-              Blog
-            </Link>
           </nav>
 
           {/* CTA Button */}
@@ -250,14 +244,6 @@ export default function Header() {
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   About
-                </Link>
-
-                <Link
-                  href="/blog"
-                  className="block px-3 py-2 text-sm font-medium text-navy-900 hover:bg-electric-50 rounded-lg transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Blog
                 </Link>
 
                 <Link

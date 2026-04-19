@@ -49,7 +49,7 @@ export default function Footer() {
                 src="/logo-white.png"
                 alt="LetRevenueFlow"
                 width={200}
-                height={46}
+                height={72}
               />
             </Link>
             <p className="text-navy-300 text-sm leading-relaxed mb-4">
@@ -156,14 +156,6 @@ export default function Footer() {
               Company
             </h4>
             <ul className="space-y-3 text-sm">
-              <li>
-                <Link
-                  href="/blog"
-                  className="text-navy-300 hover:text-electric-400 transition-colors"
-                >
-                  Blog
-                </Link>
-              </li>
               <li>
                 <Link
                   href="/faq"
