@@ -178,18 +178,24 @@ export default function Contact() {
                   </motion.div>
                 </div>
 
-                {/* Map Placeholder */}
+                {/* Google Map */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: 0.3 }}
-                  className="bg-navy-100 rounded-lg h-64 flex items-center justify-center border border-gray-300"
+                  className="rounded-lg h-64 overflow-hidden border border-gray-300"
                 >
-                  <div className="text-center">
-                    <MapPin className="w-12 h-12 text-navy-600 mx-auto mb-3" />
-                    <p className="text-navy-600 font-medium">Interactive map would go here</p>
-                  </div>
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.6784289890684!2d77.0891!3d28.4595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d18e5a64f089b%3A0x5bc2ac941e711a10!2sWeWork%20Sikanderpur!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="LetRevenueFlow Office Location"
+                  />
                 </motion.div>
 
                 {/* CTA */}

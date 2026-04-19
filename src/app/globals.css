@@ -13,20 +13,20 @@
   --color-navy-900: #0a1433;
   --color-navy-950: #060d1f;
 
-  --color-electric-50: #e7f5ff;
-  --color-electric-100: #d0ebff;
-  --color-electric-200: #a5d8ff;
-  --color-electric-300: #74c0fc;
-  --color-electric-400: #4dabf7;
-  --color-electric-500: #339af0;
-  --color-electric-600: #228be6;
-  --color-electric-700: #1c7ed6;
-  --color-electric-800: #1971c2;
-  --color-electric-900: #1864ab;
+  --color-electric-50: #f0fdfa;
+  --color-electric-100: #ccfbf1;
+  --color-electric-200: #99f6e4;
+  --color-electric-300: #5eead4;
+  --color-electric-400: #2dd4bf;
+  --color-electric-500: #14b8a6;
+  --color-electric-600: #0d9488;
+  --color-electric-700: #0f766e;
+  --color-electric-800: #115e59;
+  --color-electric-900: #134e4a;
 
-  --color-accent: #2563eb;
-  --color-accent-light: #3b82f6;
-  --color-accent-dark: #1d4ed8;
+  --color-accent: #0d9488;
+  --color-accent-light: #14b8a6;
+  --color-accent-dark: #0f766e;
 
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-heading: 'Inter', system-ui, sans-serif;
