@@ -1,5 +1,8 @@
 'use client';
 
+// Metadata: This page inherits SEO metadata from layout.tsx with title "Pricing | LetRevenueFlow"
+// Description: "Flexible engagement models for B2B lead generation and outbound sales. Custom pricing based on your goals, team, and growth stage. Talk to us about pricing."
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';

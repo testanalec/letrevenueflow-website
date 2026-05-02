@@ -1,5 +1,8 @@
 'use client';
 
+// Metadata: This page inherits SEO metadata from layout.tsx with title "Industries | LetRevenueFlow"
+// Description: "Industry-specific B2B lead generation solutions for SaaS, IT services, and agencies. Proven strategies to accelerate pipeline growth in your market."
+
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {

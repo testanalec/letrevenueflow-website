@@ -1,5 +1,8 @@
 'use client';
 
+// Metadata: This page inherits SEO metadata from layout.tsx with title "FAQ | LetRevenueFlow"
+// Description: "Frequently asked questions about LetRevenueFlow's B2B lead generation services, pricing, process, and results. Get answers to common questions."
+
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import FAQAccordion from '@/components/FAQAccordion';

@@ -1,5 +1,8 @@
 'use client';
 
+// Metadata: This page inherits SEO metadata from layout.tsx with title "Privacy Policy | LetRevenueFlow"
+// Description: "LetRevenueFlow privacy policy. Learn how we collect, use, and protect your personal data. GDPR compliant and transparent data handling practices."
+
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 

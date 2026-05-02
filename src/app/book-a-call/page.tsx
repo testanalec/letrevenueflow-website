@@ -1,5 +1,8 @@
 'use client';
 
+// Metadata: This page inherits SEO metadata from layout.tsx with title "Book a Call | LetRevenueFlow"
+// Description: "Book a 30-minute strategy call with LetRevenueFlow. Discuss your pipeline goals, challenges, and explore how we can help your B2B business grow."
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle, Clock, Users, Target, AlertCircle } from 'lucide-react';

@@ -1,6 +1,9 @@
 
 'use client';
 
+// Metadata: This page inherits SEO metadata from layout.tsx with title "Agencies & Consultancies Solutions | LetRevenueFlow"
+// Description: "Partnership and client pipeline generation for agencies. Scale business development with outsourced lead generation and appointment setting."
+
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {

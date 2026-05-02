@@ -1,5 +1,8 @@
 'use client';
 
+// Metadata: This page inherits SEO metadata from layout.tsx with title "Cookie Policy | LetRevenueFlow"
+// Description: "LetRevenueFlow cookie policy. Understand how we use cookies for analytics, performance, personalization, and marketing. Manage your preferences."
+
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 

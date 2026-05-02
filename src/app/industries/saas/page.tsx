@@ -1,6 +1,9 @@
 
 'use client';
 
+// Metadata: This page inherits SEO metadata from layout.tsx with title "SaaS Solutions | LetRevenueFlow"
+// Description: "B2B lead generation and appointment setting for SaaS companies. Drive demos, accelerate SQLs, and build predictable pipeline for recurring revenue growth."
+
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {

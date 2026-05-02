@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import BlogPostContent from './content';
 
 interface BlogPost {
@@ -494,6 +495,48 @@ export function generateStaticParams() {
     { slug: 'revenue-ops-framework' },
     { slug: 'personalization-at-scale' },
   ];
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const post = blogPosts[slug];
+
+  if (!post) {
+    return {
+      title: 'Blog | LetRevenueFlow',
+      description: 'B2B revenue growth insights, strategies, and best practices.',
+    };
+  }
+
+  return {
+    title: post.title,
+    description: post.excerpt,
+    authors: [{ name: post.author }],
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: 'article',
+      publishedTime: post.date,
+      authors: [post.author],
+      images: [
+        {
+          url: post.image,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: [post.image],
+    },
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
+  };
 }
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {

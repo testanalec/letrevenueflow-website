@@ -1,6 +1,9 @@
 
 'use client';
 
+// Metadata: This page inherits SEO metadata from layout.tsx with title "IT Services Solutions | LetRevenueFlow"
+// Description: "B2B lead generation for IT services firms. Access C-level decision-makers and build enterprise pipeline with consultative prospecting and relationship mapping."
+
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {

@@ -1,5 +1,8 @@
 'use client';
 
+// Metadata: This page inherits SEO metadata from layout.tsx with title "Thank You | LetRevenueFlow"
+// Description: "Thank you for your inquiry. We've received your information and will be in touch within 24 hours to schedule your strategy call."
+
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { CheckCircle, Clock, Mail, Calendar, FileText } from 'lucide-react';

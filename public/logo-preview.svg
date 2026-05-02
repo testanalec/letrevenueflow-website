@@ -1,0 +1,71 @@
+<svg viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="lGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A6B7A"/>
+      <stop offset="100%" style="stop-color:#2D5A6B"/>
+    </linearGradient>
+    <linearGradient id="rGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1A8A7D"/>
+      <stop offset="100%" style="stop-color:#2CB89E"/>
+    </linearGradient>
+    <linearGradient id="arrowGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1A9E8F"/>
+      <stop offset="50%" style="stop-color:#28C9A0"/>
+      <stop offset="100%" style="stop-color:#3DDC97"/>
+    </linearGradient>
+    <linearGradient id="arrowHead" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2BC9A0"/>
+      <stop offset="100%" style="stop-color:#4AE0B0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- L Letter - dark teal/steel blue block -->
+  <g>
+    <!-- L vertical bar -->
+    <rect x="8" y="12" width="22" height="96" rx="2" fill="url(#lGrad)"/>
+    <!-- L horizontal bar -->
+    <rect x="8" y="88" width="55" height="20" rx="2" fill="url(#lGrad)"/>
+    <!-- L 3D shadow/depth on vertical -->
+    <rect x="26" y="12" width="4" height="76" fill="#3D5A68" opacity="0.6"/>
+    <!-- L 3D shadow on horizontal -->
+    <rect x="8" y="88" width="55" height="4" fill="#3D5A68" opacity="0.4"/>
+  </g>
+
+  <!-- R Letter - teal green, overlapping L -->
+  <g>
+    <!-- R vertical bar -->
+    <rect x="38" y="12" width="22" height="96" rx="2" fill="url(#rGrad)"/>
+    <!-- R top bowl (curved part) -->
+    <path d="M60 12 L82 12 Q96 12 96 30 Q96 48 82 48 L60 48 Z" fill="url(#rGrad)"/>
+    <!-- R diagonal leg -->
+    <polygon points="60,48 72,48 98,108 86,108" fill="url(#rGrad)"/>
+    <!-- R 3D depth -->
+    <rect x="56" y="12" width="4" height="96" fill="#1B7D72" opacity="0.4"/>
+    <path d="M82 12 Q96 12 96 30 Q96 32 94 32 Q92 14 80 14 Z" fill="#35A893" opacity="0.5"/>
+  </g>
+
+  <!-- Arrow - diagonal from bottom-left to top-right -->
+  <g>
+    <!-- Arrow shaft -->
+    <polygon points="28,85 38,75 88,18 78,28" fill="url(#arrowGrad)" opacity="0"/>
+    <line x1="32" y1="82" x2="80" y2="24" stroke="url(#arrowGrad)" stroke-width="14" stroke-linecap="round"/>
+
+    <!-- Arrow head (triangle pointing up-right) -->
+    <polygon points="92,2 100,28 72,20" fill="url(#arrowHead)"/>
+
+    <!-- Arrow shaft proper - angled bar -->
+    <polygon points="30,88 40,78 90,18 80,28 36,82 26,92" fill="url(#arrowGrad)"/>
+
+    <!-- Arrow head larger -->
+    <polygon points="88,0 104,26 74,18" fill="url(#arrowHead)"/>
+  </g>
+
+  <!-- Text: Let -->
+  <text x="135" y="48" font-family="'Inter', 'Segoe UI', system-ui, sans-serif" font-size="38" font-weight="700" fill="#2C3E50" letter-spacing="-1">Let</text>
+
+  <!-- Text: Revenue -->
+  <text x="135" y="80" font-family="'Inter', 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="600" fill="#5A6C7D" letter-spacing="-0.5">Revenue</text>
+
+  <!-- Text: Flow -->
+  <text x="135" y="110" font-family="'Inter', 'Segoe UI', system-ui, sans-serif" font-size="32" font-weight="600" fill="#5A6C7D" letter-spacing="-0.5">Flow</text>
+</svg>

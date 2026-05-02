@@ -1,5 +1,8 @@
 'use client';
 
+// Metadata: This page inherits SEO metadata from layout.tsx with title "Contact Us | LetRevenueFlow"
+// Description: "Get in touch with LetRevenueFlow. Contact us to discuss your revenue pipeline goals, ask questions, or schedule a call with our team."
+
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Mail, Phone, MapPin } from 'lucide-react';

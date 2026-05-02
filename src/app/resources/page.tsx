@@ -1,5 +1,8 @@
 'use client';
 
+// Metadata: This page inherits SEO metadata from layout.tsx with title "Resources | LetRevenueFlow"
+// Description: "Free B2B revenue templates, guides, and frameworks. Download checklists, audit templates, and benchmark guides to optimize your pipeline generation."
+
 import { motion } from 'framer-motion';
 import { FileText, Download, CheckCircle } from 'lucide-react';
 import { useState, useRef } from 'react';

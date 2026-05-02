@@ -1,5 +1,8 @@
 'use client';
 
+// Metadata: This page inherits SEO metadata from layout.tsx with title "Terms and Conditions | LetRevenueFlow"
+// Description: "Terms and conditions for LetRevenueFlow services. Review our legal agreement, service limitations, intellectual property rights, and dispute resolution policies."
+
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 

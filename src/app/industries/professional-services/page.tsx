@@ -1,5 +1,8 @@
 'use client';
 
+// Metadata: This page inherits SEO metadata from layout.tsx with title "Professional Services Solutions | LetRevenueFlow"
+// Description: "B2B lead generation for consulting and professional services. Build qualified enterprise pipeline and accelerate long sales cycles with outbound expertise."
+
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
